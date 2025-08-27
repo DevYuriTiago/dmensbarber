@@ -21,8 +21,8 @@ export default {
       },
       keyframes: {
         glow: {
-          '0%': { 'text-shadow': '0 0 10px #FE4C02, 0 0 20px #FE4C02, 0 0 30px #FE4C02' },
-          '100%': { 'text-shadow': '0 0 20px #FE4C02, 0 0 30px #FE4C02, 0 0 40px #FE4C02' }
+          '0%': { 'text-shadow': '0 0 5px #FE4C02, 0 0 10px #FE4C02, 0 0 15px #FE4C02' },
+          '100%': { 'text-shadow': '0 0 8px #FE4C02, 0 0 15px #FE4C02, 0 0 20px #FE4C02' }
         },
         typing: {
           '0%': { width: '0' },
