@@ -21,6 +21,11 @@ const FloatingWhatsApp: React.FC = () => {
   const handleClick = () => {
     const message = encodeURIComponent('Olá! Vim pelo site e gostaria de mais informações sobre a D\'Mens Barbearia.');
     window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    
+    // Announce to screen readers
+    if ((window as any).announceToScreenReader) {
+      (window as any).announceToScreenReader('Abrindo WhatsApp em nova aba para conversar com a D\'Mens Barbearia');
+    }
   };
 
   return (
@@ -51,13 +56,18 @@ const FloatingWhatsApp: React.FC = () => {
                 ease: "easeInOut"
               }
             }}
-            className="relative w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300"
+            className="relative w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-offset-2"
+            aria-label="Conversar no WhatsApp - Nova mensagem disponível"
+            title="Clique para falar conosco no WhatsApp"
           >
-            <MessageCircle className="w-8 h-8 text-white" />
+            <MessageCircle className="w-8 h-8 text-white" aria-hidden="true" />
             
             {/* Notification Badge */}
-            <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
-              <span className="text-white text-xs font-bold">1</span>
+            <div 
+              className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center"
+              aria-label="1 nova mensagem"
+            >
+              <span className="text-white text-xs font-bold" aria-hidden="true">1</span>
             </div>
           </motion.button>
 

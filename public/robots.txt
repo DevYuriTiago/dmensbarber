@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dmensbarbearia.com.br/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas (se houver no futuro)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow important pages
+Allow: /
+Allow: /#servicos
+Allow: /#cursos
+Allow: /#faq

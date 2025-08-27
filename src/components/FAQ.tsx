@@ -33,7 +33,17 @@ const FAQ: React.FC = () => {
   ];
 
   const toggleFAQ = (index: number) => {
+    const wasOpen = openIndex === index;
     setOpenIndex(openIndex === index ? null : index);
+    
+    // Announce to screen readers
+    if ((window as any).announceToScreenReader) {
+      const faq = faqs[index];
+      const message = wasOpen 
+        ? `Pergunta "${faq.question}" foi fechada`
+        : `Pergunta "${faq.question}" foi expandida. ${faq.answer}`;
+      (window as any).announceToScreenReader(message);
+    }
   };
 
   return (
@@ -93,11 +103,23 @@ const FAQ: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
+              role="article"
+              aria-labelledby={`faq-question-${index}`}
+              aria-describedby={openIndex === index ? `faq-answer-${index}` : undefined}
             >
               <motion.button
                 onClick={() => toggleFAQ(index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFAQ(index);
+                  }
+                }}
                 whileHover={{ backgroundColor: 'rgba(254, 76, 2, 0.1)' }}
-                className="w-full px-6 py-6 text-left flex items-center justify-between focus:outline-none transition-colors duration-300"
+                className="w-full px-6 py-6 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-black transition-colors duration-300"
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
+                id={`faq-question-${index}`}
               >
                 <span className="text-lg font-semibold text-white pr-8">
                   {faq.question}
@@ -106,6 +128,7 @@ const FAQ: React.FC = () => {
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                   className="flex-shrink-0"
+                  aria-hidden="true"
                 >
                   <ChevronDown className="w-6 h-6 text-dmens-orange" />
                 </motion.div>
@@ -119,6 +142,9 @@ const FAQ: React.FC = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
+                    id={`faq-answer-${index}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${index}`}
                   >
                     <motion.div
                       initial={{ y: -10 }}

@@ -9,6 +9,7 @@ import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import TestBackground from './components/TestBackground';
+import LiveRegion from './components/LiveRegion';
 import ativo6Background from './assets/Ativo 6.png';
 
 function App() {
@@ -54,31 +55,46 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-transparent relative">
-      <TestBackground />
-      
-      {/* Main Content */}
-      <div className="relative">
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Header />
-            <main>
-              <Hero />
-              <Services />
-              <SocialProof />
-              <Courses />
-              <FAQ />
-              <FinalCTA />
-            </main>
-            <FloatingWhatsApp />
-          </motion.div>
-        </AnimatePresence>
+    <LiveRegion>
+      <div className="min-h-screen bg-transparent relative" lang="pt-BR">
+        {/* Skip Links */}
+        <div className="sr-only">
+          <a href="#main-content" className="skip-link">
+            Pular para o conteúdo principal
+          </a>
+          <a href="#servicos" className="skip-link">
+            Pular para serviços
+          </a>
+          <a href="#cursos" className="skip-link">
+            Pular para cursos
+          </a>
+        </div>
+        
+        <TestBackground />
+        
+        {/* Main Content */}
+        <div className="relative">
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Header />
+              <main id="main-content" role="main">
+                <Hero />
+                <Services />
+                <SocialProof />
+                <Courses />
+                <FAQ />
+                <FinalCTA />
+              </main>
+              <FloatingWhatsApp />
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
-    </div>
+    </LiveRegion>
   );
 }
 

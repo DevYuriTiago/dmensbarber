@@ -1,0 +1,47 @@
+{
+  "accessibility": {
+    "standards": ["WCAG2AA", "Section508"],
+    "screenReaders": {
+      "announcements": true,
+      "liveRegions": true,
+      "skipLinks": true
+    },
+    "keyboard": {
+      "navigation": true,
+      "focusManagement": true,
+      "customControls": true
+    },
+    "contrast": {
+      "ratio": "4.5:1",
+      "highContrastMode": true
+    },
+    "motion": {
+      "prefersReducedMotion": true,
+      "respectUserPreferences": true
+    }
+  },
+  "seo": {
+    "analytics": {
+      "googleAnalytics": "GA_MEASUREMENT_ID",
+      "googleTagManager": "GTM-XXXXXXX"
+    },
+    "verification": {
+      "google": "GOOGLE_VERIFICATION_CODE",
+      "bing": "BING_VERIFICATION_CODE"
+    },
+    "schema": {
+      "type": "HairSalon",
+      "structured": true,
+      "richSnippets": true
+    },
+    "social": {
+      "openGraph": true,
+      "twitterCards": true
+    }
+  },
+  "performance": {
+    "preload": ["fonts", "critical-images"],
+    "prefetch": ["dns", "external-apis"],
+    "lazy": ["images", "components"]
+  }
+}

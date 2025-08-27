@@ -2,15 +2,193 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    
+    <!-- Favicon e Icons -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FE4C02">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="D'Mens Barbearia">
+    
+    <!-- Meta Tags Básicas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>D'Mens Barbearia - Estilo, Confiança e Tradição</title>
-    <meta name="description" content="A melhor barbearia masculina com serviços premium e cursos profissionalizantes. Transforme seu estilo e sua carreira." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+    
+    <!-- SEO Principal -->
+    <title>D'Mens Barbearia - Estilo, Confiança e Tradição | Barbearia Premium</title>
+    <meta name="description" content="A melhor barbearia masculina com serviços premium e cursos profissionalizantes. Cortes modernos, barba impecável e cursos de barbeiro profissional. Agende já!" />
+    <meta name="keywords" content="barbearia, barbeiro, corte masculino, barba, bigode, curso barbeiro, barbearia premium, estilo masculino, grooming" />
+    <meta name="author" content="D'Mens Barbearia" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business" />
+    <meta property="og:title" content="D'Mens Barbearia - Estilo, Confiança e Tradição" />
+    <meta property="og:description" content="A melhor barbearia masculina com serviços premium e cursos profissionalizantes. Transforme seu estilo e sua carreira conosco!" />
+    <meta property="og:url" content="https://dmensbarbearia.com.br" />
+    <meta property="og:site_name" content="D'Mens Barbearia" />
+    <meta property="og:image" content="https://dmensbarbearia.com.br/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="D'Mens Barbearia - Estilo, Confiança e Tradição" />
+    <meta name="twitter:description" content="A melhor barbearia masculina com serviços premium e cursos profissionalizantes." />
+    <meta name="twitter:image" content="https://dmensbarbearia.com.br/og-image.jpg" />
+    
+    <!-- Business Info -->
+    <meta name="geo.region" content="BR" />
+    <meta name="geo.placename" content="Brasil" />
+    <meta name="geo.position" content="-23.550520;-46.633309" />
+    <meta name="ICBM" content="-23.550520, -46.633309" />
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        page_title: 'D\'Mens Barbearia - Homepage',
+        page_location: window.location.href
+      });
+    </script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    
+    <!-- Estrutura adicional para SEO Local -->
+    <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE" />
+    <meta name="msvalidate.01" content="BING_VERIFICATION_CODE" />
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="/ativo6.png" as="image" type="image/png">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap">
+    
+    <!-- Performance e Core Web Vitals -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//wa.me">
+    <link rel="dns-prefetch" href="//api.whatsapp.com">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HairSalon",
+      "name": "D'Mens Barbearia",
+      "description": "Barbearia premium especializada em cortes masculinos modernos, cuidados com barba e cursos profissionalizantes de barbeiro.",
+      "url": "https://dmensbarbearia.com.br",
+      "logo": "https://dmensbarbearia.com.br/logo.png",
+      "image": "https://dmensbarbearia.com.br/og-image.jpg",
+      "telephone": "+55-11-99999-9999",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Exemplo, 123",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "postalCode": "01234-567",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.550520,
+        "longitude": -46.633309
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "services": [
+        {
+          "@type": "Service",
+          "name": "Corte Clássico",
+          "description": "Corte tradicional masculino com acabamento impecável",
+          "offers": {
+            "@type": "Offer",
+            "price": "45.00",
+            "priceCurrency": "BRL"
+          }
+        },
+        {
+          "@type": "Service",
+          "name": "Pacote Premium",
+          "description": "Corte + barba + sobrancelha + produtos premium",
+          "offers": {
+            "@type": "Offer",
+            "price": "80.00",
+            "priceCurrency": "BRL"
+          }
+        },
+        {
+          "@type": "Service",
+          "name": "Experiência VIP",
+          "description": "Serviço completo com massagem relaxante e tratamentos exclusivos",
+          "offers": {
+            "@type": "Offer",
+            "price": "120.00",
+            "priceCurrency": "BRL"
+          }
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Cursos de Barbeiro",
+        "itemListElement": [
+          {
+            "@type": "Course",
+            "name": "Curso Básico de Barbeiro",
+            "description": "Aprenda as técnicas fundamentais da profissão",
+            "provider": {
+              "@type": "Organization",
+              "name": "D'Mens Barbearia"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "997.00",
+              "priceCurrency": "BRL"
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/dmensbarbearia",
+        "https://www.facebook.com/dmensbarbearia",
+        "https://api.whatsapp.com/send?phone=5511999999999"
+      ]
+    }
+    </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

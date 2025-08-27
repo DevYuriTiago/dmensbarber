@@ -23,16 +23,28 @@ const Hero: React.FC = () => {
   const handleWhatsApp = () => {
     const message = encodeURIComponent('Olá! Gostaria de agendar um horário na D\'Mens Barbearia.');
     window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    
+    // Announce to screen readers
+    if ((window as any).announceToScreenReader) {
+      (window as any).announceToScreenReader('Redirecionando para WhatsApp para agendamento');
+    }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dmens-black via-gray-900 to-dmens-black">
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dmens-black via-gray-900 to-dmens-black"
+      role="banner"
+      aria-label="Seção principal da D'Mens Barbearia"
+    >
       {/* Background Video Effect */}
-      <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg')] bg-cover bg-center opacity-20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-dmens-black/80 via-transparent to-dmens-black/40" />
+      <div 
+        className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg')] bg-cover bg-center opacity-20"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-dmens-black/80 via-transparent to-dmens-black/40" aria-hidden="true" />
       
       {/* Animated Background Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" aria-hidden="true">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -65,7 +77,7 @@ const Hero: React.FC = () => {
           <h1 className="text-4xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6">
             <span className="block animate-glow text-dmens-orange">
               {typingText}
-              <span className="animate-pulse">|</span>
+              <span className="animate-pulse" aria-hidden="true">|</span>
             </span>
           </h1>
           
@@ -86,6 +98,8 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 4, duration: 0.8 }}
           className="flex flex-col md:flex-row gap-6 justify-center items-center relative z-20"
+          role="group"
+          aria-label="Ações principais"
         >
           <motion.button
             onClick={handleWhatsApp}
@@ -94,10 +108,11 @@ const Hero: React.FC = () => {
               boxShadow: '0 0 30px rgba(254, 76, 2, 0.6)'
             }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 bg-dmens-orange text-white font-bold text-lg rounded-full overflow-hidden animate-pulse-orange"
+            className="group relative px-8 py-4 bg-dmens-orange text-white font-bold text-lg rounded-full overflow-hidden animate-pulse-orange focus:outline-none focus:ring-4 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-black"
+            aria-label="Agendar horário via WhatsApp"
           >
             <span className="relative z-10 flex items-center space-x-3">
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle className="w-6 h-6" aria-hidden="true" />
               <span>Agendar Agora</span>
             </span>
             <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
@@ -111,10 +126,11 @@ const Hero: React.FC = () => {
               color: '#FE4C02'
             }}
             whileTap={{ scale: 0.95 }}
-            className="group px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:border-dmens-orange hover:text-dmens-orange transition-all duration-300"
+            className="group px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:border-dmens-orange hover:text-dmens-orange transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmens-black"
+            aria-label="Navegar para seção de cursos"
           >
             <span className="flex items-center space-x-3">
-              <BookOpen className="w-6 h-6" />
+              <BookOpen className="w-6 h-6" aria-hidden="true" />
               <span>Conhecer Cursos</span>
             </span>
           </motion.button>
@@ -126,11 +142,21 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 5, duration: 1 }}
           className="absolute -bottom-16 md:-bottom-20 left-1/2 transform -translate-x-1/2 z-10"
+          role="button"
+          tabIndex={0}
+          aria-label="Rolar para baixo para ver mais conteúdo"
+          onClick={() => document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center backdrop-blur-sm bg-black/20"
+            className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center backdrop-blur-sm bg-black/20 cursor-pointer focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-black"
           >
             <div className="w-1 h-3 bg-dmens-orange rounded-full mt-2 animate-bounce" />
           </motion.div>
