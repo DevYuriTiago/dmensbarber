@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import SocialProof from './components/SocialProof';
 import Courses from './components/Courses';
+import Units from './components/Units';
 import FAQ from './components/FAQ';
 import FinalCTA from './components/FinalCTA';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -68,6 +69,9 @@ function App() {
           <a href="#cursos" className="skip-link">
             Pular para cursos
           </a>
+          <a href="#unidades" className="skip-link">
+            Pular para unidades
+          </a>
         </div>
         
         <TestBackground />
@@ -86,6 +90,7 @@ function App() {
                 <Services />
                 <SocialProof />
                 <Courses />
+                <Units />
                 <FAQ />
                 <FinalCTA />
               </main>

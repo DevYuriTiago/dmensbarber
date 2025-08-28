@@ -85,6 +85,21 @@ const FinalCTA: React.FC = () => {
           </motion.p>
         </motion.div>
 
+        {/* Logo D'Mens */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="mb-10"
+        >
+          <img 
+            src="/logo-horizontal-negativa.png"
+            alt="D'Mens Barbearia - Logo"
+            className="h-12 md:h-16 lg:h-20 mx-auto object-contain"
+          />
+        </motion.div>
+
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

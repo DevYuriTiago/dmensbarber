@@ -74,6 +74,20 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.3 }}
           className="mb-8"
         >
+          {/* Logo D'Mens */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="mb-8"
+          >
+            <img 
+              src="/logo-horizontal-negativa.png"
+              alt="D'Mens Barbearia - Logo"
+              className="h-16 md:h-20 lg:h-24 mx-auto object-contain"
+            />
+          </motion.div>
+
           <h1 className="text-4xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6">
             <span className="block animate-glow text-dmens-orange">
               {typingText}
@@ -84,7 +98,7 @@ const Hero: React.FC = () => {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 3, duration: 1 }}
+            transition={{ delay: 4, duration: 1 }}
             className="text-xl md:text-2xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed"
           >
             Transforme seu visual com nossos serviços premium ou inicie sua carreira 
@@ -96,7 +110,7 @@ const Hero: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4, duration: 0.8 }}
+          transition={{ delay: 5, duration: 0.8 }}
           className="flex flex-col md:flex-row gap-6 justify-center items-center relative z-20"
           role="group"
           aria-label="Ações principais"
@@ -140,7 +154,7 @@ const Hero: React.FC = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 5, duration: 1 }}
+          transition={{ delay: 6, duration: 1 }}
           className="absolute -bottom-16 md:-bottom-20 left-1/2 transform -translate-x-1/2 z-10"
           role="button"
           tabIndex={0}

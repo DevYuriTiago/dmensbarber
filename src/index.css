@@ -2,11 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global font configuration */
+@layer base {
+  /* Aplicar Oswald para todos os títulos */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', 'Arial Narrow', 'Arial', sans-serif;
+    font-weight: 500;
+  }
+  
+  /* Aplicar Roboto Slab para textos corridos */
+  p, span, div, a, button, li, td, th {
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  /* Configuração específica para elementos com classe font-display */
+  .font-display {
+    font-family: 'Oswald', 'Arial Narrow', 'Arial', sans-serif !important;
+  }
+  
+  /* Configuração específica para textos corridos */
+  .font-body {
+    font-family: 'Roboto Slab', serif !important;
+  }
+}
+
 /* Global styles for background pattern */
 html, body {
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
+  font-family: 'Roboto Slab', serif;
 }
 
 #root {
