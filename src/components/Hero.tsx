@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dmens-black via-gray-900 to-dmens-black"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dmens-blue via-blue-900 to-dmens-blue"
       role="banner"
       aria-label="Seção principal da D'Mens Barbearia"
     >
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
         className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg')] bg-cover bg-center opacity-20"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-dmens-black/80 via-transparent to-dmens-black/40" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-dmens-blue/80 via-transparent to-dmens-blue/40" aria-hidden="true" />
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0" aria-hidden="true">
@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <h1 className="text-4xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6">
-            <span className="block animate-glow text-dmens-orange">
+            <span className="block text-dmens-orange">
               {typingText}
               <span className="animate-pulse" aria-hidden="true">|</span>
             </span>
@@ -122,7 +122,7 @@ const Hero: React.FC = () => {
               boxShadow: '0 0 30px rgba(254, 76, 2, 0.6)'
             }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 bg-dmens-orange text-white font-bold text-lg rounded-full overflow-hidden animate-pulse-orange focus:outline-none focus:ring-4 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-black"
+            className="group relative px-8 py-4 bg-dmens-orange text-white font-bold text-lg rounded-full overflow-hidden animate-pulse-orange focus:outline-none focus:ring-4 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue"
             aria-label="Agendar horário via WhatsApp"
           >
             <span className="relative z-10 flex items-center space-x-3">
@@ -140,7 +140,7 @@ const Hero: React.FC = () => {
               color: '#FE4C02'
             }}
             whileTap={{ scale: 0.95 }}
-            className="group px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:border-dmens-orange hover:text-dmens-orange transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmens-black"
+            className="group px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:border-dmens-orange hover:text-dmens-orange transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmens-blue"
             aria-label="Navegar para seção de cursos"
           >
             <span className="flex items-center space-x-3">
@@ -170,7 +170,7 @@ const Hero: React.FC = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center backdrop-blur-sm bg-black/20 cursor-pointer focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-black"
+            className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center backdrop-blur-sm bg-dmens-blue/20 cursor-pointer focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue"
           >
             <div className="w-1 h-3 bg-dmens-orange rounded-full mt-2 animate-bounce" />
           </motion.div>

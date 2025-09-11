@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         'dmens-orange': '#FE4C02',
+        'dmens-blue': '#080b28',
         'dmens-black': '#000000',
         'dmens-white': '#FFFFFF',
       },

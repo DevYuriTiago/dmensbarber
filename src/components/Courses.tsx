@@ -93,8 +93,8 @@ const Courses: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-dmens-black mb-6">
-            Transforme sua <span className="text-dmens-orange">Carreira</span>
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-dmens-blue mb-6">
+            Nossos <span className="text-dmens-orange">Cursos</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Cursos profissionalizantes que preparam você para dominar a arte da barbearia
@@ -118,8 +118,8 @@ const Courses: React.FC = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="text-2xl font-display font-bold text-center text-dmens-black mb-8">
-            Jornada do Aluno
+                    <h3 className="text-2xl font-display font-bold text-center text-dmens-blue mb-8">
+            Como Funciona
           </h3>
           <div className="flex flex-col md:flex-row items-center justify-between max-w-4xl mx-auto">
             {timelineSteps.map((step, index) => (
@@ -139,7 +139,7 @@ const Courses: React.FC = () => {
                 }`}>
                   {index + 1}
                 </div>
-                <h4 className="font-semibold text-dmens-black">{step.title}</h4>
+                <h4 className="font-semibold text-dmens-blue">{step.title}</h4>
                 <p className="text-sm text-gray-600">{step.description}</p>
                 {index < timelineSteps.length - 1 && (
                   <ChevronRight className="hidden md:block w-6 h-6 text-gray-400 mt-4" />
@@ -204,21 +204,21 @@ const Courses: React.FC = () => {
                     <div className="flex items-center justify-center w-12 h-12 bg-dmens-orange/10 rounded-full mb-2 mx-auto">
                       <Clock className="w-6 h-6 text-dmens-orange" />
                     </div>
-                    <div className="font-semibold text-dmens-black">{courses[selectedCourse].duration}</div>
+                    <div className="font-semibold text-dmens-blue">{courses[selectedCourse].duration}</div>
                     <div className="text-sm text-gray-600">Duração</div>
                   </div>
                   <div className="text-center">
                     <div className="flex items-center justify-center w-12 h-12 bg-dmens-orange/10 rounded-full mb-2 mx-auto">
                       <Users className="w-6 h-6 text-dmens-orange" />
                     </div>
-                    <div className="font-semibold text-dmens-black">{courses[selectedCourse].students}</div>
+                    <div className="font-semibold text-dmens-blue">{courses[selectedCourse].students}</div>
                     <div className="text-sm text-gray-600">Formados</div>
                   </div>
                   <div className="text-center">
                     <div className="flex items-center justify-center w-12 h-12 bg-dmens-orange/10 rounded-full mb-2 mx-auto">
                       <Trophy className="w-6 h-6 text-dmens-orange" />
                     </div>
-                    <div className="font-semibold text-dmens-black">5.0</div>
+                    <div className="font-semibold text-dmens-blue">5.0</div>
                     <div className="text-sm text-gray-600">Avaliação</div>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ const Courses: React.FC = () => {
                 <div className="border-t border-gray-200 pt-8">
                   <div className="flex items-center justify-between mb-6">
                     <div>
-                      <div className="text-3xl font-bold text-dmens-black">
+                      <div className="text-3xl font-bold text-dmens-blue">
                         {courses[selectedCourse].price}
                       </div>
                       <div className="text-gray-600">

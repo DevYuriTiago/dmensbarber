@@ -47,7 +47,7 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-dmens-black relative overflow-hidden">
+    <section className="py-20 bg-dmens-blue relative overflow-hidden">
       {/* Glitch Background Effect */}
       <div className="absolute inset-0">
         {[...Array(10)].map((_, i) => (
@@ -116,7 +116,7 @@ const FAQ: React.FC = () => {
                   }
                 }}
                 whileHover={{ backgroundColor: 'rgba(254, 76, 2, 0.1)' }}
-                className="w-full px-6 py-6 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-black transition-colors duration-300"
+                className="w-full px-6 py-6 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue transition-colors duration-300"
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
                 id={`faq-question-${index}`}

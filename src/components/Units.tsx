@@ -154,7 +154,7 @@ const Units: React.FC = () => {
             <MapPin className="w-12 h-12 text-dmens-orange" />
           </motion.div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-800 mb-8 drop-shadow-sm">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-dmens-blue mb-8 drop-shadow-sm">
             Nossas Unidades
           </h2>
           <motion.p 
@@ -204,7 +204,7 @@ const Units: React.FC = () => {
                     {/* Rating Badge */}
                     <div className="absolute top-4 right-4 flex items-center space-x-1 bg-white/95 backdrop-blur-md px-3 py-2 rounded-full shadow-lg">
                       <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                      <span className="text-sm font-bold text-gray-800">{unit.rating}</span>
+                      <span className="text-sm font-bold text-dmens-blue">{unit.rating}</span>
                     </div>
                     
                     {/* Clients Badge */}

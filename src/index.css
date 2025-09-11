@@ -152,8 +152,26 @@ html, body {
     }
   }
   
+  /* D'Mens Blue Color Definition */
+  .bg-dmens-blue {
+    background-color: #080b28;
+  }
+  
+  .text-dmens-blue {
+    color: #080b28;
+  }
+  
+  .border-dmens-blue {
+    border-color: #080b28;
+  }
+  
   /* Support for Windows High Contrast Mode */
   @media (prefers-contrast: high) {
+    .bg-dmens-blue {
+      background-color: ButtonText !important;
+      color: ButtonFace !important;
+    }
+    
     .bg-dmens-black {
       background-color: ButtonText !important;
       color: ButtonFace !important;

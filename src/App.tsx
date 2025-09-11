@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import BrandBanner from './components/BrandBanner';
+import HistoryServicesWrapper from './components/HistoryServicesWrapper';
 import Services from './components/Services';
 import SocialProof from './components/SocialProof';
 import Courses from './components/Courses';
@@ -87,10 +89,13 @@ function App() {
               <Header />
               <main id="main-content" role="main">
                 <Hero />
+                <BrandBanner />
+                <HistoryServicesWrapper />
                 <Services />
                 <SocialProof />
                 <Courses />
                 <Units />
+                <BrandBanner />
                 <FAQ />
                 <FinalCTA />
               </main>

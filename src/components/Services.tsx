@@ -90,8 +90,8 @@ const Services: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-dmens-black mb-6">
-            Nossos <span className="text-dmens-orange">Serviços</span>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-dmens-blue mb-6">
+            Nossos <span className="text-dmens-orange">Planos</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Experiências únicas que combinam tradição e modernidade para o homem contemporâneo
@@ -141,7 +141,7 @@ const Services: React.FC = () => {
                 <div className={`p-4 rounded-full ${
                   service.popular 
                     ? 'bg-dmens-orange text-white' 
-                    : 'bg-gray-100 text-dmens-black'
+                    : 'bg-gray-100 text-dmens-blue'
                 }`}>
                   <service.icon className="w-8 h-8" aria-hidden="true" />
                 </div>
@@ -149,7 +149,7 @@ const Services: React.FC = () => {
 
               {/* Title & Price */}
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-display font-bold text-dmens-black mb-2">
+                <h3 className="text-2xl font-display font-bold text-dmens-blue mb-2">
                   {service.title}
                 </h3>
                 <div className="flex items-center justify-center space-x-4">
@@ -197,7 +197,7 @@ const Services: React.FC = () => {
                 className={`w-full py-3 rounded-xl font-bold transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 touch-target ${
                   service.popular
                     ? 'bg-dmens-orange text-white hover:bg-dmens-orange/90 shadow-lg hover:shadow-xl focus:ring-dmens-orange focus:ring-offset-white'
-                    : 'bg-dmens-black text-white hover:bg-dmens-orange focus:ring-dmens-black focus:ring-offset-white'
+                    : 'bg-dmens-blue text-white hover:bg-dmens-orange focus:ring-dmens-blue focus:ring-offset-white'
                 }`}
                 aria-label={`Agendar serviço ${service.title} por ${service.price} via WhatsApp`}
               >

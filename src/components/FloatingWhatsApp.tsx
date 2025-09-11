@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X } from 'lucide-react';
+import dmensSymbol from '../assets/LOGO - SÍMBOLO - PADRÃO.png';
 
 const FloatingWhatsApp: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,9 +45,9 @@ const FloatingWhatsApp: React.FC = () => {
             whileTap={{ scale: 0.9 }}
             animate={{
               boxShadow: [
-                '0 0 0 0 rgba(37, 211, 102, 0.7)',
-                '0 0 0 10px rgba(37, 211, 102, 0)',
-                '0 0 0 0 rgba(37, 211, 102, 0)'
+                '0 0 0 0 rgba(8, 11, 40, 0.7)',
+                '0 0 0 10px rgba(8, 11, 40, 0)',
+                '0 0 0 0 rgba(8, 11, 40, 0)'
               ]
             }}
             transition={{
@@ -56,11 +57,22 @@ const FloatingWhatsApp: React.FC = () => {
                 ease: "easeInOut"
               }
             }}
-            className="relative w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-offset-2"
+            className="relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2"
+            style={{
+              backgroundColor: '#080b28',
+              '&:hover': { backgroundColor: '#0a0e35' }
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a0e35'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#080b28'}
             aria-label="Conversar no WhatsApp - Nova mensagem disponível"
             title="Clique para falar conosco no WhatsApp"
           >
-            <MessageCircle className="w-8 h-8 text-white" aria-hidden="true" />
+            <img 
+              src={dmensSymbol} 
+              alt="D'Mens Símbolo" 
+              className="w-8 h-8 object-contain"
+              aria-hidden="true" 
+            />
             
             {/* Notification Badge */}
             <div 
@@ -89,8 +101,15 @@ const FloatingWhatsApp: React.FC = () => {
                   </button>
                   
                   <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MessageCircle className="w-5 h-5 text-white" />
+                    <div 
+                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: '#080b28' }}
+                    >
+                      <img 
+                        src={dmensSymbol} 
+                        alt="D'Mens Símbolo" 
+                        className="w-5 h-5 object-contain"
+                      />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800 text-sm">D'Mens Barbearia</h4>

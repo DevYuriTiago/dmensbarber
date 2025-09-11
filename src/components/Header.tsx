@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       role="banner"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled 
-          ? 'bg-dmens-black/95 backdrop-blur-md shadow-2xl' 
+          ? 'bg-dmens-blue/95 backdrop-blur-md shadow-2xl' 
           : 'bg-transparent'
       }`}
     >
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-dmens-black/95 backdrop-blur-md border-t border-dmens-orange/20"
+            className="md:hidden bg-dmens-blue/95 backdrop-blur-md border-t border-dmens-orange/20"
             role="navigation"
             aria-label="Menu mobile"
           >
@@ -111,7 +111,7 @@ const Header: React.FC = () => {
                   href={item.href}
                   whileHover={{ x: 10 }}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center space-x-3 text-white hover:text-dmens-orange transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-black rounded-lg p-2"
+                  className="flex items-center space-x-3 text-white hover:text-dmens-orange transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue rounded-lg p-2"
                   aria-label={`Navegar para ${item.label}`}
                 >
                   <item.icon className="w-5 h-5" aria-hidden="true" />
