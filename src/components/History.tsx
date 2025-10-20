@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Heart, Award, Users, Clock } from 'lucide-react';
 
 const History: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const slides = [
     {
@@ -44,14 +46,39 @@ const History: React.FC = () => {
     }
   ];
 
-  // Auto-advance slides
+  // Intersection Observer para detectar visibilidade
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // 30% da seção precisa estar visível
+        rootMargin: '0px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-advance slides - só quando visível
+  useEffect(() => {
+    if (!isVisible) return; // Só executa se a seção estiver visível
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 7000); // 7 seconds per slide
 
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [slides.length, isVisible]); // Adiciona isVisible como dependência
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -67,6 +94,7 @@ const History: React.FC = () => {
 
   return (
     <section 
+      ref={sectionRef}
       id="historia"
       className="relative bg-transparent overflow-hidden m-0 p-0 min-h-screen py-20"
       role="region"

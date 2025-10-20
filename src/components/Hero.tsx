@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, BookOpen } from 'lucide-react';
+import logoSelo from '../assets/LOGO SELO - NEGATIVA.png';
 
 const Hero: React.FC = () => {
   const [typingText, setTypingText] = useState('');
@@ -82,9 +83,9 @@ const Hero: React.FC = () => {
             className="mb-8"
           >
             <img 
-              src="/logo-horizontal-negativa.png"
+              src={logoSelo}
               alt="D'Mens Barbearia - Logo"
-              className="h-16 md:h-20 lg:h-24 mx-auto object-contain"
+              className="h-20 md:h-24 lg:h-28 mx-auto object-contain"
             />
           </motion.div>
 

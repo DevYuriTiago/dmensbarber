@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Scissors, Award, Calendar, Menu, X } from 'lucide-react';
-import Logo from '../assets/LOGO SELO - NEGATIVA.png';
+import { Scissors, BookOpen, Calendar, Menu, X } from 'lucide-react';
+import Logo from '../assets/LOGO HORIZONTAL - NEGATIVA.png';
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 
   const navItems = [
     { icon: Scissors, label: 'Serviços', href: '#servicos' },
-    { icon: Award, label: 'Cursos', href: '#cursos' },
+    { icon: BookOpen, label: 'Cursos', href: '#cursos' },
     { icon: Calendar, label: 'Agendar', href: '#contato' }
   ];
 
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
               <img 
                 src={Logo} 
                 alt="D'Mens Barbearia - Logo" 
-                className="h-12 md:h-16 w-auto"
+                className="h-8 md:h-10 w-auto"
               />
             </a>
           </motion.div>

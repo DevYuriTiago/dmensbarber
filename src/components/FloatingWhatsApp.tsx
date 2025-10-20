@@ -5,15 +5,11 @@ import dmensSymbol from '../assets/LOGO - SÍMBOLO - PADRÃO.png';
 
 const FloatingWhatsApp: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showChatBox, setShowChatBox] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-      // Show tooltip after 3 seconds
-      setTimeout(() => setShowTooltip(true), 3000);
-      // Hide tooltip after 8 seconds
-      setTimeout(() => setShowTooltip(false), 8000);
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -43,11 +39,13 @@ const FloatingWhatsApp: React.FC = () => {
             onClick={handleClick}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            onMouseEnter={() => setShowChatBox(true)}
+            onMouseLeave={() => setShowChatBox(false)}
             animate={{
               boxShadow: [
-                '0 0 0 0 rgba(8, 11, 40, 0.7)',
-                '0 0 0 10px rgba(8, 11, 40, 0)',
-                '0 0 0 0 rgba(8, 11, 40, 0)'
+                '0 0 0 0 rgba(254, 76, 2, 0.7)',
+                '0 0 0 10px rgba(254, 76, 2, 0)',
+                '0 0 0 0 rgba(254, 76, 2, 0)'
               ]
             }}
             transition={{
@@ -57,22 +55,11 @@ const FloatingWhatsApp: React.FC = () => {
                 ease: "easeInOut"
               }
             }}
-            className="relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2"
-            style={{
-              backgroundColor: '#080b28',
-              '&:hover': { backgroundColor: '#0a0e35' }
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0a0e35'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#080b28'}
-            aria-label="Conversar no WhatsApp - Nova mensagem disponível"
+            className="relative w-16 h-16 bg-dmens-orange hover:bg-orange-600 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-dmens-orange/25 focus:ring-offset-2"
+            aria-label="Conversar no WhatsApp"
             title="Clique para falar conosco no WhatsApp"
           >
-            <img 
-              src={dmensSymbol} 
-              alt="D'Mens Símbolo" 
-              className="w-8 h-8 object-contain"
-              aria-hidden="true" 
-            />
+            <MessageCircle className="w-8 h-8 text-white" aria-hidden="true" />
             
             {/* Notification Badge */}
             <div 
@@ -83,18 +70,20 @@ const FloatingWhatsApp: React.FC = () => {
             </div>
           </motion.button>
 
-          {/* Tooltip */}
+          {/* Chat Box - aparece apenas no hover */}
           <AnimatePresence>
-            {showTooltip && (
+            {showChatBox && (
               <motion.div
                 initial={{ opacity: 0, x: 50, scale: 0.8 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: 50, scale: 0.8 }}
                 className="absolute right-20 bottom-0 mb-2"
+                onMouseEnter={() => setShowChatBox(true)}
+                onMouseLeave={() => setShowChatBox(false)}
               >
                 <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-4 max-w-xs relative border border-gray-200">
                   <button
-                    onClick={() => setShowTooltip(false)}
+                    onClick={() => setShowChatBox(false)}
                     className="absolute -top-2 -right-2 w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors"
                   >
                     <X className="w-3 h-3 text-gray-600" />
@@ -102,8 +91,7 @@ const FloatingWhatsApp: React.FC = () => {
                   
                   <div className="flex items-start space-x-3">
                     <div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: '#080b28' }}
+                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-dmens-blue"
                     >
                       <img 
                         src={dmensSymbol} 
