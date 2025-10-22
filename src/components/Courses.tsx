@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Users, Trophy, Clock, ChevronRight } from 'lucide-react';
+import { Users, Trophy, Clock, ChevronRight } from 'lucide-react';
+import livroIcon from '../assets/livro.png';
 
 const Courses: React.FC = () => {
   const [selectedCourse, setSelectedCourse] = useState(0);
@@ -142,7 +143,7 @@ const Courses: React.FC = () => {
                 <h4 className="font-semibold text-dmens-blue">{step.title}</h4>
                 <p className="text-sm text-gray-600">{step.description}</p>
                 {index < timelineSteps.length - 1 && (
-                  <ChevronRight className="hidden md:block w-6 h-6 text-gray-400 mt-4" />
+                  <ChevronRight className="hidden md:block w-6 h-6 text-dmens-orange mt-4" />
                 )}
               </motion.div>
             ))}
@@ -262,7 +263,12 @@ const Courses: React.FC = () => {
                     }}
                     className="w-full bg-dmens-orange text-white font-bold py-4 rounded-xl hover:bg-dmens-orange/90 transition-colors duration-300 flex items-center justify-center space-x-2"
                   >
-                    <BookOpen className="w-5 h-5" />
+                    <img 
+                      src={livroIcon} 
+                      alt="Livro" 
+                      className="w-5 h-5" 
+                      style={{ filter: 'brightness(0) invert(1)' }}
+                    />
                     <span>Garantir Minha Vaga</span>
                   </motion.button>
                 </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, BookOpen, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import chatIcon from '../assets/chat.png';
+import livroIcon from '../assets/livro.png';
 
 const FinalCTA: React.FC = () => {
   const handleWhatsApp = (type: 'service' | 'course') => {
@@ -120,7 +122,12 @@ const FinalCTA: React.FC = () => {
             className="group relative px-8 py-4 bg-dmens-orange text-white font-bold text-lg rounded-full overflow-hidden shadow-2xl"
           >
             <span className="relative z-10 flex items-center space-x-3">
-              <MessageCircle className="w-6 h-6" />
+              <img 
+                src={chatIcon} 
+                alt="Chat" 
+                className="w-6 h-6" 
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
               <span>Transformar Meu Visual</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
@@ -142,7 +149,12 @@ const FinalCTA: React.FC = () => {
             className="group relative px-8 py-4 bg-transparent border-2 border-dmens-orange text-dmens-orange font-bold text-lg rounded-full overflow-hidden hover:text-white transition-colors duration-300"
           >
             <span className="relative z-10 flex items-center space-x-3">
-              <BookOpen className="w-6 h-6" />
+              <img 
+                src={livroIcon} 
+                alt="Livro" 
+                className="w-6 h-6" 
+                style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
+              />
               <span>Construir Minha Carreira</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>

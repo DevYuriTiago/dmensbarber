@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone, Car, Star, Users, Wifi, Snowflake } from 'lucide-react';
 import { GlowCard } from './ui/spotlight-card';
+import fundoVideo from '../assets/Fundo_dmens.mp4';
 
 const Units: React.FC = () => {
   const units = [
@@ -86,21 +87,32 @@ const Units: React.FC = () => {
   return (
     <section 
       id="unidades"
-      className="relative py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden"
+      className="relative py-32 overflow-hidden"
       role="region"
       aria-label="Nossas Unidades"
     >
-      {/* Blur Transition Top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-dmens-orange via-dmens-orange/80 to-transparent backdrop-blur-sm" />
-      
-      {/* Blur Transition Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dmens-orange via-dmens-orange/80 to-transparent backdrop-blur-sm" />
-
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="w-full h-full bg-repeat animate-pulse" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FE4C02' fill-opacity='0.1'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3Ccircle cx='60' cy='60' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
+          style={{
+            willChange: 'transform',
+            backfaceVisibility: 'hidden',
+            perspective: 1000
+          }}
+        >
+          <source src={fundoVideo} type="video/mp4" />
+          {/* Fallback caso o vídeo não carregue */}
+          <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-700 to-black" />
+        </video>
+        
+        {/* Overlay escuro para melhor legibilidade */}
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Dynamic Floating Elements */}
@@ -154,14 +166,14 @@ const Units: React.FC = () => {
             <MapPin className="w-12 h-12 text-dmens-orange" />
           </motion.div>
           
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-dmens-blue mb-8 drop-shadow-sm">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 drop-shadow-lg">
             Nossas Unidades
           </h2>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto font-body leading-relaxed"
+            className="text-2xl md:text-3xl text-gray-200 max-w-4xl mx-auto font-body leading-relaxed drop-shadow-md"
           >
             Duas localizações estratégicas, um só padrão de{' '}
             <span className="font-display font-bold text-dmens-orange">excelência</span>
@@ -203,7 +215,7 @@ const Units: React.FC = () => {
                     
                     {/* Rating Badge */}
                     <div className="absolute top-4 right-4 flex items-center space-x-1 bg-white/95 backdrop-blur-md px-3 py-2 rounded-full shadow-lg">
-                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      <Star className="w-4 h-4 text-dmens-orange fill-current" />
                       <span className="text-sm font-bold text-dmens-blue">{unit.rating}</span>
                     </div>
                     
@@ -295,8 +307,8 @@ const Units: React.FC = () => {
           }}
           className="text-center mt-20"
         >
-          <div className="inline-block p-8 bg-dmens-orange/20 backdrop-blur-xl rounded-3xl">
-            <p className="text-2xl md:text-3xl text-gray-700 font-body mb-8 leading-relaxed">
+          <div className="inline-block p-8 bg-black/40 backdrop-blur-xl rounded-3xl border border-white/20">
+            <p className="text-2xl md:text-3xl text-white font-body mb-8 leading-relaxed drop-shadow-lg">
               Não importa qual unidade você escolha,{' '}
               <span className="font-display font-bold text-dmens-orange">a excelência é garantida!</span>
             </p>

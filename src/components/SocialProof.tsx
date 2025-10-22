@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Users, Scissors, Award } from 'lucide-react';
+import { Star, Users, Award } from 'lucide-react';
+import tesouraIcon from '../assets/tesoura.png';
 
 const SocialProof: React.FC = () => {
   const [counters, setCounters] = useState({
@@ -66,7 +67,7 @@ const SocialProof: React.FC = () => {
       color: 'text-blue-400'
     },
     { 
-      icon: Scissors, 
+      icon: tesouraIcon, 
       value: counters.cortes.toLocaleString(), 
       label: 'Cortes Realizados',
       color: 'text-dmens-orange'
@@ -143,7 +144,16 @@ const SocialProof: React.FC = () => {
               className="text-center group"
             >
               <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <stat.icon className={`w-8 h-8 ${stat.color}`} />
+                {stat.icon === tesouraIcon ? (
+                  <img 
+                    src={stat.icon} 
+                    alt="Tesoura" 
+                    className="w-8 h-8" 
+                    style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
+                  />
+                ) : (
+                  <stat.icon className="w-8 h-8 text-dmens-orange" />
+                )}
               </div>
               <motion.div
                 key={stat.value}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, BookOpen } from 'lucide-react';
 import logoSelo from '../assets/LOGO SELO - NEGATIVA.png';
+import chatIcon from '../assets/chat.png';
+import livroIcon from '../assets/livro.png';
 
 const Hero: React.FC = () => {
   const [typingText, setTypingText] = useState('');
@@ -127,7 +128,13 @@ const Hero: React.FC = () => {
             aria-label="Agendar horário via WhatsApp"
           >
             <span className="relative z-10 flex items-center space-x-3">
-              <MessageCircle className="w-6 h-6" aria-hidden="true" />
+              <img 
+                src={chatIcon} 
+                alt="Chat" 
+                className="w-6 h-6" 
+                style={{ filter: 'brightness(0) invert(1)' }}
+                aria-hidden="true" 
+              />
               <span>Agendar Agora</span>
             </span>
             <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
@@ -145,7 +152,13 @@ const Hero: React.FC = () => {
             aria-label="Navegar para seção de cursos"
           >
             <span className="flex items-center space-x-3">
-              <BookOpen className="w-6 h-6" aria-hidden="true" />
+              <img 
+                src={livroIcon} 
+                alt="Livro" 
+                className="w-6 h-6" 
+                style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
+                aria-hidden="true" 
+              />
               <span>Conhecer Cursos</span>
             </span>
           </motion.button>

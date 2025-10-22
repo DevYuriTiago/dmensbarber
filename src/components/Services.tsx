@@ -1,49 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scissors, Star, Clock, Shield } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import iconeCabelo from '../assets/icone-cabelo.png';
+import iconeCompleto from '../assets/icone-completo.png';
+import iconeBarba from '../assets/icone-barba.png';
 
 const Services: React.FC = () => {
   const services = [
     {
-      title: 'CLÁSSICO',
-      price: 'R$ 45',
-      duration: '45min',
+      title: 'Corte ilimitado',
+      price: 'R$ 64,90',
+      duration: 'Ilimitado',
       features: [
-        'Corte personalizado',
-        'Acabamento navalhado',
-        'Toalha quente',
-        'Finalização com pomada'
+        'Corte seu cabelo quantas vezes quiser',
+        'Desconto de 10% em produtos ou serviços',
+        'Pagamento no cartão de crédito'
       ],
-      icon: Scissors,
+      icon: iconeCabelo,
       popular: false
     },
     {
-      title: 'PREMIUM',
-      price: 'R$ 75',
-      duration: '60min',
+      title: 'Corte + Barba ilimitado',
+      price: 'R$ 124,90',
+      duration: 'Ilimitado',
       features: [
-        'Corte + Barba completa',
-        'Tratamento capilar',
-        'Massagem relaxante',
-        'Produtos premium',
-        'Whisky cortesia'
+        'Corte e barba quantas vezes quiser',
+        'Desconto de 10% em produtos ou serviços',
+        'Pagamento no cartão de crédito'
       ],
-      icon: Star,
+      icon: iconeCompleto,
       popular: true
     },
     {
-      title: 'VIP EXPERIENCE',
-      price: 'R$ 120',
-      duration: '90min',
+      title: 'Barba ilimitado',
+      price: 'R$ 79,90',
+      duration: 'Ilimitado',
       features: [
-        'Serviço completo',
-        'Spa masculino',
-        'Consultoria de estilo',
-        'Produtos exclusivos',
-        'Área privativa',
-        'Bebidas premium'
+        'Corte sua barba quantas vezes quiser',
+        'Desconto de 10% em produtos ou serviços',
+        'Pagamento no cartão de crédito'
       ],
-      icon: Shield,
+      icon: iconeBarba,
       popular: false
     }
   ];
@@ -103,7 +100,7 @@ const Services: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8 lg:gap-12"
+          className="grid md:grid-cols-3 gap-8 lg:gap-12 items-center"
           role="list"
           aria-label="Lista de serviços disponíveis"
         >
@@ -112,14 +109,14 @@ const Services: React.FC = () => {
               key={service.title}
               variants={cardVariants}
               whileHover={{ 
-                y: -10,
-                scale: 1.05,
+                y: service.popular ? -15 : -10,
+                scale: service.popular ? 1.08 : 1.05,
                 transition: { duration: 0.3 }
               }}
-              className={`relative bg-white/85 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-2 transform perspective-1000 ${
+              className={`relative bg-white/85 backdrop-blur-sm rounded-3xl shadow-2xl border-2 transform perspective-1000 ${
                 service.popular 
-                  ? 'border-dmens-orange shadow-dmens-orange/20' 
-                  : 'border-gray-200 hover:border-dmens-orange/50'
+                  ? 'border-dmens-orange shadow-dmens-orange/20 p-10 md:p-12 md:my-0 md:mx-[-1rem]' 
+                  : 'border-gray-200 hover:border-dmens-orange/50 p-8'
               }`}
               role="listitem"
               aria-label={`Serviço ${service.title} por ${service.price}`}
@@ -138,27 +135,41 @@ const Services: React.FC = () => {
 
               {/* Icon */}
               <div className="flex justify-center mb-6">
-                <div className={`p-4 rounded-full ${
+                <div className={`rounded-full ${
                   service.popular 
-                    ? 'bg-dmens-orange text-white' 
-                    : 'bg-gray-100 text-dmens-blue'
+                    ? 'bg-dmens-orange text-white p-5 md:p-6' 
+                    : 'bg-gray-100 text-dmens-blue p-4'
                 }`}>
-                  <service.icon className="w-8 h-8" aria-hidden="true" />
+                  <img 
+                    src={service.icon} 
+                    alt={service.title}
+                    className={service.popular ? 'w-16 h-16 md:w-20 md:h-20' : 'w-12 h-12 md:w-14 md:h-14'}
+                    style={{ 
+                      filter: service.popular 
+                        ? 'brightness(0) invert(1)' 
+                        : 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)'
+                    }}
+                    aria-hidden="true" 
+                  />
                 </div>
               </div>
 
               {/* Title & Price */}
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-display font-bold text-dmens-blue mb-2">
+                <h3 className={`font-display font-bold text-dmens-blue mb-2 ${
+                  service.popular ? 'text-3xl md:text-4xl' : 'text-2xl'
+                }`}>
                   {service.title}
                 </h3>
                 <div className="flex items-center justify-center space-x-4">
-                  <span className="text-4xl font-bold text-dmens-orange">
+                  <span className={`font-bold text-dmens-orange ${
+                    service.popular ? 'text-5xl md:text-6xl' : 'text-4xl'
+                  }`}>
                     {service.price}
                   </span>
                   <div className="flex items-center text-gray-500">
-                    <Clock className="w-4 h-4 mr-1" aria-hidden="true" />
-                    <span className="text-sm" aria-label={`Duração: ${service.duration}`}>
+                    <Clock className={`mr-1 ${service.popular ? 'w-5 h-5' : 'w-4 h-4'}`} aria-hidden="true" />
+                    <span className={`${service.popular ? 'text-base' : 'text-sm'}`} aria-label={`Duração: ${service.duration}`}>
                       {service.duration}
                     </span>
                   </div>

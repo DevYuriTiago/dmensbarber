@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import dmensSymbol from '../assets/LOGO - SÍMBOLO - PADRÃO.png';
+import chatIcon from '../assets/chat.png';
 
 const FloatingWhatsApp: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -59,7 +60,13 @@ const FloatingWhatsApp: React.FC = () => {
             aria-label="Conversar no WhatsApp"
             title="Clique para falar conosco no WhatsApp"
           >
-            <MessageCircle className="w-8 h-8 text-white" aria-hidden="true" />
+            <img 
+              src={chatIcon} 
+              alt="Chat" 
+              className="w-8 h-8" 
+              style={{ filter: 'brightness(0) invert(1)' }}
+              aria-hidden="true" 
+            />
             
             {/* Notification Badge */}
             <div 
@@ -86,7 +93,7 @@ const FloatingWhatsApp: React.FC = () => {
                     onClick={() => setShowChatBox(false)}
                     className="absolute -top-2 -right-2 w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors"
                   >
-                    <X className="w-3 h-3 text-gray-600" />
+                    <X className="w-3 h-3 text-dmens-orange" />
                   </button>
                   
                   <div className="flex items-start space-x-3">

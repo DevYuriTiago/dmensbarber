@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Zap } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -83,11 +83,9 @@ const FAQ: React.FC = () => {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center mb-6">
-            <Zap className="w-8 h-8 text-dmens-orange mr-3" />
             <h2 className="text-4xl md:text-6xl font-display font-bold text-white">
               FAQ<span className="text-dmens-orange animate-pulse">.</span>
             </h2>
-            <Zap className="w-8 h-8 text-dmens-orange ml-3" />
           </div>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Respostas rápidas para as perguntas mais frequentes

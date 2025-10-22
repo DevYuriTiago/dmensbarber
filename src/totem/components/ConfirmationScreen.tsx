@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Calendar, Clock, User, Phone, Star, Home } from 'lucide-react';
+import { Check, Clock, User, Phone, Star, Home } from 'lucide-react';
 import { useTotem } from '../context/TotemContext';
 import logoSelo from '../../assets/LOGO - SELO - PADRÃO.png';
+import agendaIcon from '../../assets/agenda.png';
 
 export const ConfirmationScreen: React.FC = () => {
   const { state, dispatch } = useTotem();
@@ -116,7 +117,12 @@ export const ConfirmationScreen: React.FC = () => {
 
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
-                <Calendar className="w-8 h-8 text-dmens-orange" />
+                <img 
+                  src={agendaIcon} 
+                  alt="Agenda" 
+                  className="w-8 h-8" 
+                  style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
+                />
                 <div>
                   <p className="text-lg text-gray-400 font-body">Data</p>
                   <p className="text-2xl font-display font-bold text-white capitalize">{today}</p>

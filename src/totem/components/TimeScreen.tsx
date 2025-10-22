@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTotem, AVAILABLE_TIMES } from '../context/TotemContext';
-import { Clock, ArrowRight, ArrowLeft, Calendar } from 'lucide-react';
+import { Clock, ArrowRight, ArrowLeft } from 'lucide-react';
 import logoSelo from '../../assets/LOGO - SELO - PADRÃO.png';
+import agendaIcon from '../../assets/agenda.png';
 
 const TimeScreen: React.FC = () => {
   const { state, dispatch } = useTotem();
@@ -52,7 +53,12 @@ const TimeScreen: React.FC = () => {
             HORÁRIO
           </h2>
           <div className="flex items-center justify-center mt-6 text-xl md:text-2xl text-gray-300 font-body">
-            <Calendar className="w-8 h-8 mr-3 text-dmens-orange" />
+            <img 
+              src={agendaIcon} 
+              alt="Agenda" 
+              className="w-8 h-8 mr-3" 
+              style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
+            />
             <span className="capitalize">{today}</span>
           </div>
         </motion.div>
@@ -135,7 +141,7 @@ const TimeScreen: React.FC = () => {
             className="bg-gradient-to-r from-green-800/20 to-green-900/20 rounded-2xl p-8 mb-12 border-2 border-green-400/30"
           >
             <div className="flex items-center justify-center">
-              <Clock className="w-8 h-8 text-green-400 mr-4" />
+              <Clock className="w-8 h-8 text-dmens-orange mr-4" />
               <span className="text-2xl font-display font-bold text-white">
                 Horário selecionado: {state.selectedTime}
               </span>

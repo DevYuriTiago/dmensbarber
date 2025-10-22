@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Scissors, BookOpen, Calendar, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import Logo from '../assets/LOGO HORIZONTAL - NEGATIVA.png';
+import tesouraIcon from '../assets/tesoura.png';
+import livroIcon from '../assets/livro.png';
+import agendaIcon from '../assets/agenda.png';
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,9 +18,9 @@ const Header: React.FC = () => {
   }, []);
 
   const navItems = [
-    { icon: Scissors, label: 'Serviços', href: '#servicos' },
-    { icon: BookOpen, label: 'Cursos', href: '#cursos' },
-    { icon: Calendar, label: 'Agendar', href: '#contato' }
+    { icon: tesouraIcon, label: 'Serviços', href: '#servicos' },
+    { icon: livroIcon, label: 'Cursos', href: '#cursos' },
+    { icon: agendaIcon, label: 'Agendar', href: '#contato' }
   ];
 
   return (
@@ -68,7 +71,13 @@ const Header: React.FC = () => {
                 className="flex flex-col items-center text-white hover:text-dmens-orange transition-colors duration-300 group focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-transparent rounded-lg p-2"
                 aria-label={`Navegar para ${item.label}`}
               >
-                <item.icon className="w-6 h-6 mb-1" aria-hidden="true" />
+                <img 
+                  src={item.icon} 
+                  alt={item.label} 
+                  className="w-6 h-6 mb-1" 
+                  style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
+                  aria-hidden="true" 
+                />
                 <span className="text-sm font-medium opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
                   {item.label}
                 </span>
@@ -114,8 +123,14 @@ const Header: React.FC = () => {
                   className="flex items-center space-x-3 text-white hover:text-dmens-orange transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue rounded-lg p-2"
                   aria-label={`Navegar para ${item.label}`}
                 >
-                  <item.icon className="w-5 h-5" aria-hidden="true" />
-                  <span>{item.label}</span>
+                                    <img 
+                    src={item.icon} 
+                    alt={item.label} 
+                    className="w-5 h-5" 
+                    style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
+                    aria-hidden="true" 
+                  />
+                  <span className="font-medium">{item.label}</span>
                 </motion.a>
               ))}
             </div>
