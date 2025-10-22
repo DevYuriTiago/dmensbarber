@@ -7,12 +7,12 @@ import livroIcon from '../assets/livro.png';
 const FinalCTA: React.FC = () => {
   const handleWhatsApp = (type: 'service' | 'course') => {
     const messages = {
-      service: 'Olá! Quero agendar um horário na D\'Mens Barbearia. Qual a disponibilidade?',
-      course: 'Olá! Tenho interesse nos cursos da D\'Mens. Gostaria de mais informações sobre as turmas.'
+      service: 'Olá! Vim pelo site da D\'Mens Barbearia e quero agendar um horário. Qual a disponibilidade?',
+      course: 'Olá! Vim pelo site e tenho interesse nos cursos profissionalizantes da D\'Mens. Gostaria de mais informações sobre as turmas e valores.'
     };
     
     const message = encodeURIComponent(messages[type]);
-    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/5581987979894?text=${message}`, '_blank');
   };
 
   return (

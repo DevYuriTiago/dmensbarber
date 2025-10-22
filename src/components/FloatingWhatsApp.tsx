@@ -17,8 +17,8 @@ const FloatingWhatsApp: React.FC = () => {
   }, []);
 
   const handleClick = () => {
-    const message = encodeURIComponent('Olá! Vim pelo site e gostaria de mais informações sobre a D\'Mens Barbearia.');
-    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    const message = encodeURIComponent('Olá! Vim pelo site da D\'Mens Barbearia e gostaria de conversar.');
+    window.open(`https://wa.me/5581987979894?text=${message}`, '_blank');
     
     // Announce to screen readers
     if ((window as any).announceToScreenReader) {

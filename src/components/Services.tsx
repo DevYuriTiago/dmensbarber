@@ -197,22 +197,16 @@ const Services: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
-                  const message = encodeURIComponent(`Gostaria de agendar o serviço ${service.title} - ${service.price}`);
-                  window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
-                  
-                  // Announce to screen readers
-                  if ((window as any).announceToScreenReader) {
-                    (window as any).announceToScreenReader(`Abrindo WhatsApp para agendar ${service.title} por ${service.price}`);
-                  }
+                  window.open('https://cashbarber.com.br/dmens', '_blank');
                 }}
                 className={`w-full py-3 rounded-xl font-bold transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 touch-target ${
                   service.popular
                     ? 'bg-dmens-orange text-white hover:bg-dmens-orange/90 shadow-lg hover:shadow-xl focus:ring-dmens-orange focus:ring-offset-white'
                     : 'bg-dmens-blue text-white hover:bg-dmens-orange focus:ring-dmens-blue focus:ring-offset-white'
                 }`}
-                aria-label={`Agendar serviço ${service.title} por ${service.price} via WhatsApp`}
+                aria-label={`Assinar plano ${service.title} por ${service.price}`}
               >
-                Agendar Agora
+                Assinar Plano
               </motion.button>
             </motion.article>
           ))}

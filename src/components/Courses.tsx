@@ -258,8 +258,8 @@ const Courses: React.FC = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => {
-                      const message = encodeURIComponent(`Tenho interesse no curso ${courses[selectedCourse].title}. Gostaria de mais informações.`);
-                      window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+                      const message = encodeURIComponent(`Olá! Vim pelo site e tenho interesse no curso de ${courses[selectedCourse].title}. Gostaria de mais informações sobre valores, próximas turmas e conteúdo programático.`);
+                      window.open(`https://wa.me/5581987979894?text=${message}`, '_blank');
                     }}
                     className="w-full bg-dmens-orange text-white font-bold py-4 rounded-xl hover:bg-dmens-orange/90 transition-colors duration-300 flex items-center justify-center space-x-2"
                   >

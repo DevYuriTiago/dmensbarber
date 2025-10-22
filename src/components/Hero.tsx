@@ -23,8 +23,8 @@ const Hero: React.FC = () => {
   }, []);
 
   const handleWhatsApp = () => {
-    const message = encodeURIComponent('Olá! Gostaria de agendar um horário na D\'Mens Barbearia.');
-    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    const message = encodeURIComponent('Olá! Vim pelo site da D\'Mens Barbearia e gostaria de agendar um horário.');
+    window.open(`https://wa.me/5581987979894?text=${message}`, '_blank');
     
     // Announce to screen readers
     if ((window as any).announceToScreenReader) {
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center pb-20 md:pb-24 overflow-hidden bg-gradient-to-br from-dmens-blue via-blue-900 to-dmens-blue"
+      className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden bg-gradient-to-br from-dmens-blue via-blue-900 to-dmens-blue"
       role="banner"
       aria-label="Seção principal da D'Mens Barbearia"
     >
@@ -68,20 +68,20 @@ const Hero: React.FC = () => {
         ))}
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto w-full">
         {/* Main Title */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="mb-8"
+          className="mb-6 md:mb-8"
         >
           {/* Logo D'Mens */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="mb-8"
+            className="mb-6 md:mb-8"
           >
             <img 
               src={logoSelo}
@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
             />
           </motion.div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-4 md:mb-6 px-2">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-3 md:mb-4 px-2">
             <span className="block text-dmens-orange">
               {typingText}
               <span className="animate-pulse" aria-hidden="true">|</span>
@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4, duration: 1 }}
-            className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-base sm:text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed px-4"
           >
             Transforme seu visual com nossos serviços premium ou inicie sua carreira 
             com nossos cursos profissionalizantes de excelência.
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 5, duration: 0.8 }}
-          className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-stretch md:items-center relative z-20 px-4 max-w-2xl mx-auto"
+          className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-stretch md:items-center relative z-20 px-4 max-w-2xl mx-auto mt-6 md:mt-8"
           role="group"
           aria-label="Ações principais"
         >
@@ -169,7 +169,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 6, duration: 1 }}
-          className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 z-10"
+          className="mt-12 md:mt-16"
           role="button"
           tabIndex={0}
           aria-label="Rolar para baixo para ver mais conteúdo"
@@ -184,9 +184,9 @@ const Hero: React.FC = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center backdrop-blur-sm bg-dmens-blue/20 cursor-pointer focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue"
+            className="w-7 h-11 border-2 border-white/80 rounded-full flex justify-center bg-dmens-blue/30 cursor-pointer focus:outline-none focus:ring-2 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue shadow-lg mx-auto"
           >
-            <div className="w-1 h-3 bg-dmens-orange rounded-full mt-2 animate-bounce" />
+            <div className="w-1.5 h-3 bg-dmens-orange rounded-full mt-2 animate-bounce shadow-lg" />
           </motion.div>
         </motion.div>
       </div>

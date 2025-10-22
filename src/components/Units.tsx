@@ -69,9 +69,9 @@ const Units: React.FC = () => {
     }
   };
 
-  const handleWhatsApp = (phone: string, unitName: string) => {
-    const message = encodeURIComponent(`Olá! Gostaria de agendar um horário na ${unitName} da D'Mens Barbearia.`);
-    window.open(`https://wa.me/55${phone.replace(/\D/g, '')}?text=${message}`, '_blank');
+  const handleWhatsApp = (unitName: string) => {
+    const message = encodeURIComponent(`Olá! Vim pelo site e gostaria de agendar um horário na ${unitName} da D'Mens Barbearia.`);
+    window.open(`https://wa.me/5581987979894?text=${message}`, '_blank');
     
     if ((window as any).announceToScreenReader) {
       (window as any).announceToScreenReader(`Redirecionando para WhatsApp da ${unitName}`);
@@ -233,7 +233,7 @@ const Units: React.FC = () => {
 
                     {/* CTA Button */}
                     <motion.button
-                      onClick={() => handleWhatsApp(unit.phone, unit.name)}
+                      onClick={() => handleWhatsApp(unit.name)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="w-full flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-dmens-orange font-bold py-4 px-6 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-lg mt-6"
