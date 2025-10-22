@@ -164,19 +164,7 @@ const ServicesMarquee: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <motion.div 
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="inline-block p-3 md:p-4 bg-dmens-orange/20 rounded-full backdrop-blur-md mb-6 md:mb-8"
-          >
-            <img 
-              src={tesouraIcon} 
-              alt="Tesoura" 
-              className="w-10 h-10 md:w-12 md:h-12" 
-              style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
-            />
-          </motion.div>          <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-dmens-blue mb-6 md:mb-8">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-dmens-blue mb-6 md:mb-8">
             Nossos <span className="text-dmens-orange">Serviços</span>
           </h2>
           <motion.p 

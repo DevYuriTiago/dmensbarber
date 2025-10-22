@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Heart, Award, Users, Clock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Award, Users, Clock } from 'lucide-react';
 
 const History: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,7 +14,7 @@ const History: React.FC = () => {
       subtitle: "Tradição e Paixão",
       text: "Fundada com o sonho de criar um espaço único para o homem moderno, a D'Mens Barbearia nasceu da paixão pela arte de barbear e do cuidado masculino. Desde o primeiro dia, nosso compromisso tem sido oferecer não apenas um corte de cabelo, mas uma experiência completa de bem-estar e estilo.",
       image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80",
-      icon: Heart,
+      icon: Award,
       stats: "Fundada em 2018"
     },
     {
@@ -116,15 +116,6 @@ const History: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="inline-block p-4 bg-white/20 rounded-full backdrop-blur-md mb-8"
-          >
-            <Heart className="w-12 h-12 text-white" />
-          </motion.div>
-          
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 drop-shadow-2xl">
             Nossa <span className="text-white">História</span>
           </h2>

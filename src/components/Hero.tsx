@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dmens-blue via-blue-900 to-dmens-blue"
+      className="relative min-h-screen flex items-center justify-center pb-20 md:pb-24 overflow-hidden bg-gradient-to-br from-dmens-blue via-blue-900 to-dmens-blue"
       role="banner"
       aria-label="Seção principal da D'Mens Barbearia"
     >
@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
             />
           </motion.div>
 
-          <h1 className="text-4xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-4 md:mb-6 px-2">
             <span className="block text-dmens-orange">
               {typingText}
               <span className="animate-pulse" aria-hidden="true">|</span>
@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4, duration: 1 }}
-            className="text-xl md:text-2xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed px-4"
           >
             Transforme seu visual com nossos serviços premium ou inicie sua carreira 
             com nossos cursos profissionalizantes de excelência.
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 5, duration: 0.8 }}
-          className="flex flex-col md:flex-row gap-6 justify-center items-center relative z-20"
+          className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-stretch md:items-center relative z-20 px-4 max-w-2xl mx-auto"
           role="group"
           aria-label="Ações principais"
         >
@@ -124,14 +124,14 @@ const Hero: React.FC = () => {
               boxShadow: '0 0 30px rgba(254, 76, 2, 0.6)'
             }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-4 bg-dmens-orange text-white font-bold text-lg rounded-full overflow-hidden animate-pulse-orange focus:outline-none focus:ring-4 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue"
+            className="group relative w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-dmens-orange text-white font-bold text-base md:text-lg rounded-full overflow-hidden animate-pulse-orange focus:outline-none focus:ring-4 focus:ring-dmens-orange focus:ring-offset-2 focus:ring-offset-dmens-blue"
             aria-label="Agendar horário via WhatsApp"
           >
-            <span className="relative z-10 flex items-center space-x-3">
+            <span className="relative z-10 flex items-center justify-center space-x-2 md:space-x-3">
               <img 
                 src={chatIcon} 
                 alt="Chat" 
-                className="w-6 h-6" 
+                className="w-5 h-5 md:w-6 md:h-6" 
                 style={{ filter: 'brightness(0) invert(1)' }}
                 aria-hidden="true" 
               />
@@ -148,14 +148,14 @@ const Hero: React.FC = () => {
               color: '#FE4C02'
             }}
             whileTap={{ scale: 0.95 }}
-            className="group px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:border-dmens-orange hover:text-dmens-orange transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmens-blue"
+            className="group w-full md:w-auto px-6 md:px-8 py-3 md:py-4 border-2 border-white text-white font-bold text-base md:text-lg rounded-full hover:border-dmens-orange hover:text-dmens-orange transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmens-blue"
             aria-label="Navegar para seção de cursos"
           >
-            <span className="flex items-center space-x-3">
+            <span className="flex items-center justify-center space-x-2 md:space-x-3">
               <img 
                 src={livroIcon} 
                 alt="Livro" 
-                className="w-6 h-6" 
+                className="w-5 h-5 md:w-6 md:h-6" 
                 style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
                 aria-hidden="true" 
               />
@@ -169,7 +169,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 6, duration: 1 }}
-          className="absolute -bottom-16 md:-bottom-20 left-1/2 transform -translate-x-1/2 z-10"
+          className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 z-10"
           role="button"
           tabIndex={0}
           aria-label="Rolar para baixo para ver mais conteúdo"

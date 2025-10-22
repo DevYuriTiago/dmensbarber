@@ -33,7 +33,7 @@ const FloatingWhatsApp: React.FC = () => {
           initial={{ opacity: 0, scale: 0, rotate: -180 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           exit={{ opacity: 0, scale: 0, rotate: 180 }}
-          className="fixed bottom-6 right-6 z-50"
+          className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50"
         >
           {/* WhatsApp Button */}
           <motion.button
@@ -56,14 +56,14 @@ const FloatingWhatsApp: React.FC = () => {
                 ease: "easeInOut"
               }
             }}
-            className="relative w-16 h-16 bg-dmens-orange hover:bg-orange-600 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-dmens-orange/25 focus:ring-offset-2"
+            className="relative w-14 h-14 md:w-16 md:h-16 bg-dmens-orange hover:bg-orange-600 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-dmens-orange/25 focus:ring-offset-2"
             aria-label="Conversar no WhatsApp"
             title="Clique para falar conosco no WhatsApp"
           >
             <img 
               src={chatIcon} 
               alt="Chat" 
-              className="w-8 h-8" 
+              className="w-7 h-7 md:w-8 md:h-8" 
               style={{ filter: 'brightness(0) invert(1)' }}
               aria-hidden="true" 
             />
@@ -77,14 +77,14 @@ const FloatingWhatsApp: React.FC = () => {
             </div>
           </motion.button>
 
-          {/* Chat Box - aparece apenas no hover */}
+          {/* Chat Box - aparece apenas no hover e em telas maiores */}
           <AnimatePresence>
             {showChatBox && (
               <motion.div
                 initial={{ opacity: 0, x: 50, scale: 0.8 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: 50, scale: 0.8 }}
-                className="absolute right-20 bottom-0 mb-2"
+                className="hidden md:block absolute right-20 bottom-0 mb-2"
                 onMouseEnter={() => setShowChatBox(true)}
                 onMouseLeave={() => setShowChatBox(false)}
               >

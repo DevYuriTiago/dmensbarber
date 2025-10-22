@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone, Car, Star, Users, Wifi, Snowflake } from 'lucide-react';
-import { GlowCard } from './ui/spotlight-card';
+import { Clock, Phone, Car, Star, Users, Wifi, Snowflake, MapPin } from 'lucide-react';
 import fundoVideo from '../assets/Fundo_dmens.mp4';
 
 const Units: React.FC = () => {
@@ -48,7 +47,7 @@ const Units: React.FC = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.4
+        staggerChildren: 0.2
       }
     }
   };
@@ -56,21 +55,16 @@ const Units: React.FC = () => {
   const cardVariants = {
     hidden: { 
       opacity: 0, 
-      x: 120,
-      scale: 0.8,
-      rotateY: 15
+      y: 40,
+      scale: 0.95
     },
     visible: { 
       opacity: 1, 
-      x: 0,
+      y: 0,
       scale: 1,
-      rotateY: 0,
       transition: {
-        duration: 1.2,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        type: "spring",
-        stiffness: 100,
-        damping: 15
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   };
@@ -87,93 +81,64 @@ const Units: React.FC = () => {
   return (
     <section 
       id="unidades"
-      className="relative py-32 overflow-hidden"
+      className="relative py-12 md:py-16 overflow-hidden"
       role="region"
       aria-label="Nossas Unidades"
+      style={{
+        transform: 'translateZ(0)',
+        willChange: 'auto',
+        isolation: 'isolate'
+      }}
     >
-      {/* Video Background */}
+      {/* Barra laranja neon superior */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-dmens-orange to-transparent shadow-[0_0_20px_rgba(254,76,2,0.8)]" />
+      
+      {/* Video Background - Altamente Otimizado */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-          style={{
-            willChange: 'transform',
-            backfaceVisibility: 'hidden',
-            perspective: 1000
-          }}
-        >
-          <source src={fundoVideo} type="video/mp4" />
-          {/* Fallback caso o vídeo não carregue */}
-          <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-700 to-black" />
-        </video>
-        
-        {/* Overlay escuro para melhor legibilidade */}
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
-
-      {/* Dynamic Floating Elements */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            animate={{ 
-              opacity: [0, 0.3, 0],
-              scale: [0, 1.5, 0],
-              x: [0, Math.random() * 200 - 100, Math.random() * 150 - 75],
-              y: [0, Math.random() * 200 - 100, Math.random() * 150 - 75],
-              rotate: [0, 360]
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              delay: i * 0.6,
-              ease: "easeInOut"
-            }}
-            className="absolute w-4 h-4 bg-dmens-orange/20 rounded-full backdrop-blur-sm"
+        <div className="absolute inset-0 w-full h-full" style={{ filter: 'blur(3px)', transform: 'scale(1.05)' }}>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='%231a1a1a'/%3E%3C/svg%3E"
+            className="w-full h-full object-cover"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              transform: 'translate3d(0, 0, 0)',
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden'
             }}
-          />
-        ))}
+          >
+            <source src={fundoVideo} type="video/mp4" />
+          </video>
+        </div>
+        
+        {/* Overlay para contraste */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Enhanced Animation */}
         <motion.div
-          initial={{ opacity: 0, y: 80, scale: 0.8 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ 
-            duration: 1.2,
-            ease: [0.25, 0.46, 0.45, 0.94],
-            type: "spring",
-            stiffness: 100
+            duration: 0.5,
+            ease: "easeOut"
           }}
-          className="text-center mb-20"
+          className="text-center mb-8 md:mb-12"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="inline-block p-4 bg-dmens-orange/20 rounded-full backdrop-blur-md mb-8"
-          >
-            <MapPin className="w-12 h-12 text-dmens-orange" />
-          </motion.div>
-          
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 drop-shadow-lg">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4 drop-shadow-lg">
             Nossas Unidades
           </h2>
           <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-2xl md:text-3xl text-gray-200 max-w-4xl mx-auto font-body leading-relaxed drop-shadow-md"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+            className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto font-body leading-relaxed drop-shadow-md"
           >
             Duas localizações estratégicas, um só padrão de{' '}
             <span className="font-display font-bold text-dmens-orange">excelência</span>
@@ -185,8 +150,8 @@ const Units: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-12 lg:gap-16"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 gap-6 md:gap-8"
         >
           {units.map((unit, index) => (
             <motion.div
@@ -195,32 +160,33 @@ const Units: React.FC = () => {
               className="flex justify-center"
             >
               <div
-                className="w-full max-w-lg h-auto bg-dmens-orange border border-dmens-orange hover:border-orange-600 transition-all duration-500 group shadow-xl hover:shadow-2xl rounded-2xl overflow-hidden"
+                className="w-full max-w-lg bg-dmens-orange border-2 border-dmens-orange hover:border-orange-400 transition-colors duration-300 group shadow-2xl rounded-2xl overflow-hidden"
+                style={{
+                  transform: 'translateZ(0)',
+                  willChange: 'auto'
+                }}
               >
-                <GlowCard
-                  glowColor="white"
-                  customSize={true}
-                  className="w-full h-full bg-transparent border-0 shadow-none"
-                >
                 {/* Card Content */}
-                <div className="relative h-full flex flex-col">
+                <div className="relative h-full flex flex-col p-6">
                   {/* Header with Image */}
                   <div className="relative h-56 rounded-xl overflow-hidden mb-6">
                     <img
                       src={unit.image}
                       alt={`${unit.name} - D'Mens Barbearia`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     
                     {/* Rating Badge */}
-                    <div className="absolute top-4 right-4 flex items-center space-x-1 bg-white/95 backdrop-blur-md px-3 py-2 rounded-full shadow-lg">
+                    <div className="absolute top-4 right-4 flex items-center space-x-1 bg-white/90 px-3 py-2 rounded-full shadow-lg">
                       <Star className="w-4 h-4 text-dmens-orange fill-current" />
                       <span className="text-sm font-bold text-dmens-blue">{unit.rating}</span>
                     </div>
                     
                     {/* Clients Badge */}
-                    <div className="absolute top-4 left-4 flex items-center space-x-2 bg-white backdrop-blur-md px-3 py-2 rounded-full shadow-lg">
+                    <div className="absolute top-4 left-4 flex items-center space-x-2 bg-white/90 px-3 py-2 rounded-full shadow-lg">
                       <Users className="w-4 h-4 text-dmens-orange" />
                       <span className="text-sm font-bold text-dmens-orange">{unit.clients}</span>
                     </div>
@@ -236,51 +202,41 @@ const Units: React.FC = () => {
                   {/* Unit Details */}
                   <div className="flex-1 space-y-4 px-2">
                     {/* Address */}
-                    <motion.div 
-                      whileHover={{ x: 5 }}
-                      className="flex items-start space-x-3 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300"
-                    >
+                    <div className="flex items-start space-x-3 p-4 bg-white/20 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200">
                       <MapPin className="w-5 h-5 text-white mt-1 flex-shrink-0" />
                       <div>
                         <p className="font-body text-white font-semibold">{unit.address}</p>
                         <p className="font-body text-white/80 text-sm">{unit.city}</p>
                       </div>
-                    </motion.div>
+                    </div>
 
                     {/* Hours */}
-                    <motion.div 
-                      whileHover={{ x: 5 }}
-                      className="flex items-center space-x-3 p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:border-white/50 transition-all duration-300"
-                    >
+                    <div className="flex items-center space-x-3 p-4 bg-white/20 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200">
                       <Clock className="w-5 h-5 text-white flex-shrink-0" />
                       <p className="font-body text-white font-semibold">{unit.hours}</p>
-                    </motion.div>
+                    </div>
 
                     {/* Features Grid */}
                     <div className="grid grid-cols-2 gap-3">
                       {unit.features.map((feature, idx) => (
-                        <motion.div
+                        <div
                           key={idx}
-                          whileHover={{ scale: 1.02 }}
-                          className="flex items-center space-x-2 p-3 bg-white/20 backdrop-blur-sm rounded-lg border border-white/30 hover:bg-white/30 hover:border-white/50 transition-all duration-300"
+                          className="flex items-center space-x-2 p-3 bg-white/20 rounded-lg border border-white/30 hover:bg-white/30 hover:border-white/50 transition-colors duration-200"
                         >
                           <feature.icon className="w-4 h-4 text-white" />
                           <span className="text-xs font-body text-white font-medium">
                             {feature.label}
                           </span>
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
 
                     {/* CTA Button */}
                     <motion.button
                       onClick={() => handleWhatsApp(unit.phone, unit.name)}
-                      whileHover={{ 
-                        scale: 1.02,
-                        boxShadow: "0 10px 30px rgba(255, 255, 255, 0.3)"
-                      }}
+                      whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-dmens-orange font-bold py-4 px-6 rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50 shadow-lg mt-6"
+                      className="w-full flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-dmens-orange font-bold py-4 px-6 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-lg mt-6"
                       aria-label={`Agendar horário na ${unit.name} via WhatsApp`}
                     >
                       <Phone className="w-5 h-5" />
@@ -288,7 +244,6 @@ const Units: React.FC = () => {
                     </motion.button>
                   </div>
                 </div>
-                </GlowCard>
               </div>
             </motion.div>
           ))}
@@ -296,31 +251,27 @@ const Units: React.FC = () => {
 
         {/* Enhanced Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.8 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ 
-            delay: 1.2, 
-            duration: 1,
-            type: "spring",
-            stiffness: 100
+            delay: 0.3, 
+            duration: 0.5,
+            ease: "easeOut"
           }}
-          className="text-center mt-20"
+          className="text-center mt-8 md:mt-12"
         >
-          <div className="inline-block p-8 bg-black/40 backdrop-blur-xl rounded-3xl border border-white/20">
-            <p className="text-2xl md:text-3xl text-white font-body mb-8 leading-relaxed drop-shadow-lg">
+          <div className="inline-block p-6 md:p-8 bg-black/50 rounded-2xl border border-white/20">
+            <p className="text-lg md:text-xl text-white font-body mb-6 leading-relaxed drop-shadow-lg">
               Não importa qual unidade você escolha,{' '}
               <span className="font-display font-bold text-dmens-orange">a excelência é garantida!</span>
             </p>
             
             <motion.a
               href="#servicos"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 25px 50px rgba(254, 76, 2, 0.4)"
-              }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center px-12 py-4 bg-dmens-orange text-white font-bold text-xl rounded-2xl hover:bg-orange-600 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-dmens-orange focus:ring-offset-4 focus:ring-offset-white shadow-2xl"
+              className="inline-flex items-center justify-center px-8 md:px-10 py-3 bg-dmens-orange text-white font-bold text-lg rounded-xl hover:bg-orange-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-dmens-orange shadow-2xl"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' });
@@ -331,6 +282,9 @@ const Units: React.FC = () => {
           </div>
         </motion.div>
       </div>
+      
+      {/* Barra laranja neon inferior */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-dmens-orange to-transparent shadow-[0_0_20px_rgba(254,76,2,0.8)]" />
     </section>
   );
 };
