@@ -63,8 +63,7 @@ const FinalCTA: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <blockquote className="text-3xl md:text-5xl font-display text-white leading-relaxed mb-8">
-            <span className="text-dmens-orange">"</span>
+          <blockquote className="text-5xl md:text-6xl lg:text-7xl font-display text-white leading-relaxed mb-8">
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -73,14 +72,13 @@ const FinalCTA: React.FC = () => {
             >
               Pronto pra transformar o seu visual ou sua história?
             </motion.span>
-            <span className="text-dmens-orange">"</span>
           </blockquote>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-2xl md:text-3xl text-gray-300 max-w-3xl mx-auto font-body leading-relaxed"
           >
             Seja para um corte impecável ou para dominar a arte da barbearia, 
             este é o momento de dar o próximo passo.

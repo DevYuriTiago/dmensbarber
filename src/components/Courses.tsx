@@ -84,7 +84,7 @@ const Courses: React.FC = () => {
   ];
 
   return (
-    <section id="cursos" className="py-20 bg-white/70 backdrop-blur-sm">
+    <section id="cursos" className="py-12 md:py-20 m-0 bg-white/70 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -94,10 +94,10 @@ const Courses: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-dmens-blue mb-6">
-            Nossos <span className="text-dmens-orange">Cursos</span>
+                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-dmens-blue mb-6">
+            Nossos Cursos
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto mb-8 font-body leading-relaxed">
             Cursos profissionalizantes que preparam você para dominar a arte da barbearia
           </p>
           

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Users, Award } from 'lucide-react';
+import { Star, Users } from 'lucide-react';
 import tesouraIcon from '../assets/tesoura.png';
+import navalhaRetro from '/navalha-retro.png';
 
 const SocialProof: React.FC = () => {
   const [counters, setCounters] = useState({
@@ -79,7 +80,7 @@ const SocialProof: React.FC = () => {
       color: 'text-yellow-400'
     },
     { 
-      icon: Award, 
+      icon: navalhaRetro, 
       value: counters.anos, 
       label: 'Anos de Tradição',
       color: 'text-green-400'
@@ -110,7 +111,7 @@ const SocialProof: React.FC = () => {
   return (
     <section 
       id="social-proof" 
-      className="py-20 bg-gradient-to-r from-dmens-black via-gray-900 to-dmens-black relative overflow-hidden"
+      className="py-12 md:py-20 m-0 bg-gradient-to-r from-dmens-black via-gray-900 to-dmens-black relative overflow-hidden"
     >
       {/* Parallax Background */}
       <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg')] bg-cover bg-center opacity-10" />
@@ -124,10 +125,10 @@ const SocialProof: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-            Números que <span className="text-dmens-orange">Impressionam</span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6">
+            Números que Impressionam
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-2xl md:text-3xl text-gray-300 max-w-4xl mx-auto font-body leading-relaxed">
             Nossa trajetória de sucesso construída dia após dia
           </p>
         </motion.div>
@@ -144,10 +145,10 @@ const SocialProof: React.FC = () => {
               className="text-center group"
             >
               <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                {stat.icon === tesouraIcon ? (
+                {stat.icon === tesouraIcon || stat.icon === navalhaRetro ? (
                   <img 
                     src={stat.icon} 
-                    alt="Tesoura" 
+                    alt={stat.icon === tesouraIcon ? "Tesoura" : "Navalha Retrô"} 
                     className="w-8 h-8" 
                     style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
                   />

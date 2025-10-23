@@ -148,12 +148,11 @@ const ServicesMarquee: React.FC = () => {
   return (
     <section 
       id="nossos-servicos"
-      className="relative bg-transparent m-0 pt-0 -mt-[5px] border-t-0 ring-0 outline-none py-16 md:py-20"
+      className="relative m-0 p-0 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16 lg:pb-20 border-0 -mt-[15vh] md:-mt-[20vh]"
+      style={{ backgroundColor: 'transparent', zIndex: 10 }}
       role="region"
       aria-label="Nossos Serviços"
     >
-      {/* Blur transition overlay top */}
-      <div className="pointer-events-none absolute left-0 right-0 top-0 h-[12px] bg-gradient-to-b from-white/15 via-white/8 to-transparent backdrop-blur-sm"></div>
       
       {/* Header da Seção */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 md:mb-16">
@@ -165,21 +164,19 @@ const ServicesMarquee: React.FC = () => {
           className="text-center"
         >
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-dmens-blue mb-6 md:mb-8">
-            Nossos <span className="text-dmens-orange">Serviços</span>
+            Nossos Serviços
           </h2>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-4xl mx-auto font-body leading-relaxed px-4"
+            className="text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto font-body leading-relaxed drop-shadow-lg"
           >
             Descubra todos os serviços que oferecemos para{' '}
             <span className="font-display font-bold text-dmens-orange">valorizar seu estilo</span>
           </motion.p>
         </motion.div>
-      </div>
-
-      {/* Marquee Container */}
+      </div>      {/* Marquee Container */}
       <div className="relative">
         {/* Gradientes nas bordas para efeito fade */}
         <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-white/60 to-transparent z-10 pointer-events-none" />

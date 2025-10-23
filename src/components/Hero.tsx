@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import logoSelo from '../assets/LOGO SELO - NEGATIVA.png';
 import chatIcon from '../assets/chat.png';
 import livroIcon from '../assets/livro.png';
+import ativo4 from '/Ativo 4.png';
 
 const Hero: React.FC = () => {
   const [typingText, setTypingText] = useState('');
@@ -34,38 +35,132 @@ const Hero: React.FC = () => {
 
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden bg-gradient-to-br from-dmens-blue via-blue-900 to-dmens-blue"
+      className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden bg-gradient-to-b from-dmens-blue to-blue-900"
       role="banner"
       aria-label="Seção principal da D'Mens Barbearia"
     >
-      {/* Background Video Effect */}
-      <div 
-        className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg')] bg-cover bg-center opacity-20"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-dmens-blue/80 via-transparent to-dmens-blue/40" aria-hidden="true" />
+      {/* Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-dmens-blue via-transparent to-dmens-blue" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="w-full h-full bg-repeat" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FE4C02' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }} />
+        </div>
+      </div>
       
-      {/* Animated Background Elements */}
+      {/* Floating Elements */}
       <div className="absolute inset-0" aria-hidden="true">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{ opacity: 0 }}
             animate={{ 
-              opacity: [0, 1, 0],
+              opacity: [0, 0.3, 0],
               scale: [0, 1, 0],
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight
+              x: [0, Math.random() * 200 - 100, 0],
+              y: [0, Math.random() * 200 - 100, 0]
             }}
             transition={{
-              duration: 4,
+              duration: 4 + Math.random() * 2,
               repeat: Infinity,
-              delay: i * 0.5,
+              delay: i * 0.3,
               ease: "easeInOut"
             }}
-            className="absolute w-2 h-2 bg-dmens-orange rounded-full"
+            className="absolute w-4 h-4 bg-dmens-orange/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
           />
         ))}
+      </div>
+
+      {/* Decorative Ativo4 Elements - Blurred in foreground */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {/* Ativo4 - Esquerda Superior */}
+        <motion.img
+          src={ativo4}
+          alt=""
+          initial={{ opacity: 0, x: -100, rotate: -15 }}
+          animate={{ 
+            opacity: 0.4,
+            x: 0,
+            rotate: -10,
+            y: [0, 20, 0]
+          }}
+          transition={{
+            opacity: { duration: 1 },
+            x: { duration: 1 },
+            rotate: { duration: 1 },
+            y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+          }}
+          className="absolute -left-20 top-40 w-48 md:w-64 lg:w-80 opacity-40"
+          style={{ filter: 'blur(2px)' }}
+        />
+
+        {/* Ativo4 - Direita Meio */}
+        <motion.img
+          src={ativo4}
+          alt=""
+          initial={{ opacity: 0, x: 100, rotate: 15 }}
+          animate={{ 
+            opacity: 0.3,
+            x: 0,
+            rotate: 20,
+            y: [0, -30, 0]
+          }}
+          transition={{
+            opacity: { duration: 1.2, delay: 0.3 },
+            x: { duration: 1.2, delay: 0.3 },
+            rotate: { duration: 1.2, delay: 0.3 },
+            y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
+          }}
+          className="absolute -right-16 top-1/3 w-40 md:w-56 lg:w-72 opacity-30"
+          style={{ filter: 'blur(3px)' }}
+        />
+
+        {/* Ativo4 - Esquerda Inferior */}
+        <motion.img
+          src={ativo4}
+          alt=""
+          initial={{ opacity: 0, x: -100, rotate: 25 }}
+          animate={{ 
+            opacity: 0.35,
+            x: 0,
+            rotate: 15,
+            y: [0, 25, 0]
+          }}
+          transition={{
+            opacity: { duration: 1.5, delay: 0.6 },
+            x: { duration: 1.5, delay: 0.6 },
+            rotate: { duration: 1.5, delay: 0.6 },
+            y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          }}
+          className="absolute -left-24 bottom-32 w-52 md:w-72 lg:w-96 opacity-35"
+          style={{ filter: 'blur(4px)' }}
+        />
+
+        {/* Ativo4 - Direita Inferior (Mobile hidden) */}
+        <motion.img
+          src={ativo4}
+          alt=""
+          initial={{ opacity: 0, x: 100, rotate: -20 }}
+          animate={{ 
+            opacity: 0.25,
+            x: 0,
+            rotate: -15,
+            y: [0, -20, 0]
+          }}
+          transition={{
+            opacity: { duration: 1.8, delay: 0.9 },
+            x: { duration: 1.8, delay: 0.9 },
+            rotate: { duration: 1.8, delay: 0.9 },
+            y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+          }}
+          className="hidden md:block absolute -right-20 bottom-20 w-36 md:w-48 lg:w-64 opacity-25"
+          style={{ filter: 'blur(5px)' }}
+        />
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto w-full">

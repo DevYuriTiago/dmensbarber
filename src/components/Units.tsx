@@ -7,38 +7,36 @@ const Units: React.FC = () => {
   const units = [
     {
       id: 1,
-      name: "Unidade Centro",
-      address: "Av. Principal, 123 - Centro",
-      city: "São Paulo - SP",
-      phone: "(11) 99999-9999",
-      hours: "Seg-Sáb: 8h às 18h",
+      name: "Unidade Jardim Fragoso",
+      address: "Av. da Integração, 93",
+      city: "Olinda - PE",
+      hours: "Seg-Sex: 9h às 20h | Sáb: 8h às 19h",
       parking: "Estacionamento próprio",
       image: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80",
       rating: 4.9,
-      clients: "500+",
+      clients: "1000+",
       features: [
-        { icon: Car, label: "Estacionamento" },
         { icon: Wifi, label: "Wi-Fi Gratuito" },
         { icon: Snowflake, label: "Ar Condicionado" },
-        { icon: Users, label: "Música Ambiente" }
+        { icon: Users, label: "Ambiente Moderno" },
+        { icon: Star, label: "Atendimento VIP" }
       ]
     },
     {
       id: 2,
-      name: "Unidade Shopping",
-      address: "Shopping Center, Loja 245 - 2º Piso",
-      city: "São Paulo - SP", 
-      phone: "(11) 88888-8888",
-      hours: "Seg-Dom: 10h às 22h",
-      parking: "Estacionamento do shopping",
+      name: "Unidade Jardim Atlântico",
+      address: "Av. Fagundes Varela, 365",
+      city: "Olinda - PE", 
+      hours: "Seg-Sex: 9h às 20h | Sáb: 8h às 19h",
+      parking: "Estacionamento disponível",
       image: "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=800&q=80",
-      rating: 4.8,
-      clients: "800+",
+      rating: 4.9,
+      clients: "1000+",
       features: [
-        { icon: Users, label: "Praça de Alimentação" },
-        { icon: Star, label: "Cinema" },
-        { icon: Car, label: "Fácil Acesso" },
-        { icon: Wifi, label: "Wi-Fi Shopping" }
+        { icon: Car, label: "Estacionamento" },
+        { icon: Wifi, label: "Wi-Fi Gratuito" },
+        { icon: Snowflake, label: "Ar Condicionado" },
+        { icon: Users, label: "Ambiente Moderno" }
       ]
     }
   ];
@@ -130,7 +128,7 @@ const Units: React.FC = () => {
           }}
           className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-4 drop-shadow-lg">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-4 drop-shadow-lg">
             Nossas Unidades
           </h2>
           <motion.p 
@@ -138,10 +136,9 @@ const Units: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.4 }}
-            className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto font-body leading-relaxed drop-shadow-md"
+            className="text-2xl md:text-3xl text-gray-200 max-w-3xl mx-auto font-body leading-relaxed drop-shadow-md"
           >
-            Duas localizações estratégicas, um só padrão de{' '}
-            <span className="font-display font-bold text-dmens-orange">excelência</span>
+            Duas localizações estratégicas, um só padrão de excelência
           </motion.p>
         </motion.div>
 

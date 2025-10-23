@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from './Header';
 import Hero from './Hero';
 import BrandBanner from './BrandBanner';
-import HistoryServicesWrapper from './HistoryServicesWrapper';
+import History from './History';
+import ServicesMarquee from './ServicesMarquee';
 import Services from './Services';
 import SocialProof from './SocialProof';
 import Courses from './Courses';
@@ -90,7 +91,8 @@ const LandingPage: React.FC = () => {
               <main id="main-content" role="main">
                 <Hero />
                 <BrandBanner />
-                <HistoryServicesWrapper />
+                <History />
+                <ServicesMarquee />
                 <Services />
                 <SocialProof />
                 <Courses />

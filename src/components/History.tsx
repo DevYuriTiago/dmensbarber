@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Award, Users, Clock } from 'lucide-react';
+import ativo05 from '/ativo05-full.png';
 
 const History: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -96,16 +97,18 @@ const History: React.FC = () => {
     <section 
       ref={sectionRef}
       id="historia"
-      className="relative bg-transparent overflow-hidden m-0 p-0 min-h-screen py-20"
+      className="relative m-0 p-0 py-12 md:py-20"
       role="region"
       aria-label="História da D'Mens Barbearia"
+      style={{
+        backgroundImage: `url(${ativo05})`,
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'top center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '120vh',
+        paddingBottom: '15vh'
+      }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="w-full h-full bg-repeat" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3Ccircle cx='60' cy='60' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }} />
-      </div>
 
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
@@ -117,7 +120,7 @@ const History: React.FC = () => {
           className="text-center"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-8 drop-shadow-2xl">
-            Nossa <span className="text-white">História</span>
+            Nossa História
           </h2>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -132,7 +135,7 @@ const History: React.FC = () => {
       </div>
 
       {/* Slideshow Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative" style={{ zIndex: 5 }}>
         <div className="relative">
           {/* Main Slide */}
           <AnimatePresence mode="wait">
@@ -243,12 +246,6 @@ const History: React.FC = () => {
           </p>
         </div>
       </div>
-
-      {/* Anti-seam overlay */}
-      <div className="pointer-events-none absolute left-0 right-0 -bottom-[5px] h-[10px] bg-gradient-to-b from-white/30 to-transparent"></div>
-      
-      {/* Blur transition overlay */}
-      <div className="pointer-events-none absolute left-0 right-0 -bottom-[8px] h-[16px] bg-gradient-to-b from-white/20 via-white/10 to-transparent backdrop-blur-sm"></div>
     </section>
   );
 };

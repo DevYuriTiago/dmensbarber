@@ -83,11 +83,11 @@ const FAQ: React.FC = () => {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center mb-6">
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white">
-              FAQ<span className="text-dmens-orange animate-pulse">.</span>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white">
+              FAQ
             </h2>
           </div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-2xl md:text-3xl text-gray-300 max-w-2xl mx-auto font-body leading-relaxed">
             Respostas rápidas para as perguntas mais frequentes
           </p>
         </motion.div>
