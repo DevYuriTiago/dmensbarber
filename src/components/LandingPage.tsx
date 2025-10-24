@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BrandIntro from './BrandIntro';
 import Header from './Header';
 import Hero from './Hero';
 import BrandBanner from './BrandBanner';
@@ -17,9 +18,19 @@ import LiveRegion from './LiveRegion';
 import ativo6Background from '../assets/Ativo 6.png';
 
 const LandingPage: React.FC = () => {
+  const [showContent, setShowContent] = useState(true); // Já inicia true
+
   useEffect(() => {
-    // Definir background do body
-    document.body.style.backgroundImage = `url(${ativo6Background})`;
+    // Verificar se a intro já foi reproduzida
+    const introPlayed = sessionStorage.getItem('brandIntroPlayed');
+    if (introPlayed === 'true') {
+      setShowContent(true);
+    }
+  }, []);
+  useEffect(() => {
+    // Definir background do body - ATIVO6 REMOVIDO TEMPORARIAMENTE
+    // document.body.style.backgroundImage = `url(${ativo6Background})`;
+    document.body.style.backgroundImage = 'none';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center center';
     document.body.style.backgroundRepeat = 'no-repeat';
@@ -60,7 +71,14 @@ const LandingPage: React.FC = () => {
 
   return (
     <LiveRegion>
-      <div className="min-h-screen bg-transparent relative" lang="pt-BR">
+      {/* Vídeo de Introdução da Marca */}
+      <BrandIntro onComplete={() => setShowContent(true)} />
+      
+      {/* Conteúdo do Site - sempre visível, por trás do vídeo */}
+      <div
+        className="min-h-screen bg-transparent relative"
+        lang="pt-BR"
+      >
         {/* Skip Links */}
         <div className="sr-only">
           <a href="#main-content" className="skip-link">
@@ -89,7 +107,7 @@ const LandingPage: React.FC = () => {
             >
               <Header />
               <main id="main-content" role="main">
-                <Hero />
+                <Hero startAnimations={showContent} />
                 <BrandBanner />
                 <History />
                 <ServicesMarquee />

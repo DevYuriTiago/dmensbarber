@@ -12,7 +12,9 @@ const BackgroundPattern: React.FC<BackgroundPatternProps> = ({
     <div 
       className="background-pattern-fixed"
       style={{
-        backgroundImage: `url(${ativo6Background})`,
+        // ATIVO6 REMOVIDO TEMPORARIAMENTE
+        // backgroundImage: `url(${ativo6Background})`,
+        backgroundImage: 'none',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',

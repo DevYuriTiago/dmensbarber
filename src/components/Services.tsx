@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock } from 'lucide-react';
 import iconeCabelo from '../assets/icone-cabelo.png';
 import iconeCompleto from '../assets/icone-completo.png';
 import iconeBarba from '../assets/icone-barba.png';
-import ativo01 from '/ativo01-full.png';
+import ativo01Full from '/ativo01-full.png';
+import ativo01Mobile from '/ativo01.png';
 
 const Services: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detecta se é mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   const services = [
     {
       title: 'Corte ilimitado',
@@ -80,7 +94,7 @@ const Services: React.FC = () => {
       role="region"
       aria-label="Seção de serviços da barbearia"
       style={{
-        backgroundImage: `url(${ativo01})`,
+        backgroundImage: `url(${isMobile ? ativo01Mobile : ativo01Full})`,
         backgroundSize: '100vw 120%',
         backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat',

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abertura Diagonal com Interação</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { height: 100vh; overflow: hidden; }
+
+/* FOTO DE FUNDO (Conteúdo B) */
+.fotoB {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botão de teste */
+button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.8);
+  color: #222;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+/* FOTO DA FRENTE (Conteúdo A) */
+.fotoA {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Ambas as metades herdam a mesma imagem */
+.slice {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80')
+    center/cover no-repeat;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Triângulo superior esquerdo (corte exato no centro diagonal) */
+.slice.top {
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  animation: moveTop 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Triângulo inferior direito (corte complementar) */
+.slice.bottom {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  animation: moveBottom 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* ===== Animações ===== */
+@keyframes moveTop {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  30%  { transform: translate(-2%, -2%) rotate(-1deg); }
+  100% { transform: translate(-60%, -60%) rotate(-3deg); }
+}
+
+@keyframes moveBottom {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  30%  { transform: translate(2%, 2%) rotate(1deg); }
+  100% { transform: translate(60%, 60%) rotate(3deg); }
+}
+</style>
+</head>
+<body>
+  <!-- FOTO DE FUNDO (Conteúdo B) -->
+  <div class="fotoB">
+    <button onclick="alert('✅ Interação funcionando!')">Clique aqui</button>
+  </div>
+
+  <!-- FOTO DE FRENTE (Conteúdo A, que se abre) -->
+  <div class="fotoA" id="fotoA">
+    <div class="slice top"></div>
+    <div class="slice bottom"></div>
+  </div>
+
+  <script>
+    // Remove a camada da frente após o término da animação
+    const fotoA = document.getElementById("fotoA");
+
+    fotoA.addEventListener("animationend", (e) => {
+      // Apenas remove após a última metade (bottom)
+      if (e.animationName === "moveBottom") {
+        fotoA.remove();
+      }
+    });
+  </script>
+</body>
+</html>

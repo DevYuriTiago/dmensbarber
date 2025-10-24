@@ -10,7 +10,9 @@ const TestBackground: React.FC = () => {
         width: '100vw',
         height: '100vh',
         zIndex: -1,
-        backgroundImage: 'url(/ativo6.png)',
+        // ATIVO6 REMOVIDO TEMPORARIAMENTE
+        // backgroundImage: 'url(/ativo6.png)',
+        backgroundImage: 'none',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

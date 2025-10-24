@@ -5,11 +5,17 @@ import chatIcon from '../assets/chat.png';
 import livroIcon from '../assets/livro.png';
 import ativo4 from '/Ativo 4.png';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  startAnimations?: boolean;
+}
+
+const Hero: React.FC<HeroProps> = ({ startAnimations = true }) => {
   const [typingText, setTypingText] = useState('');
   const fullText = 'Estilo. Confiança. Tradição.';
 
   useEffect(() => {
+    if (!startAnimations) return; // Não anima se não deve começar
+    
     let index = 0;
     const timer = setInterval(() => {
       if (index <= fullText.length) {
@@ -21,7 +27,7 @@ const Hero: React.FC = () => {
     }, 100);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [startAnimations]);
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent('Olá! Vim pelo site da D\'Mens Barbearia e gostaria de agendar um horário.');
@@ -34,7 +40,11 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section 
+    <motion.section 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: startAnimations ? 1 : 0 }}
+      transition={{ duration: 1, delay: startAnimations ? 0.5 : 0 }}
+      style={{ pointerEvents: startAnimations ? 'auto' : 'none' }}
       className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden bg-gradient-to-b from-dmens-blue to-blue-900"
       role="banner"
       aria-label="Seção principal da D'Mens Barbearia"
@@ -285,7 +295,7 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

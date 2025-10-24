@@ -1,12 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Award, Users, Clock } from 'lucide-react';
-import ativo05 from '/ativo05-full.png';
+import ativo05Full from '/ativo05-full.png';
+import ativo05Mobile from '/Ativo05.png';
 
 const History: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Detecta se é mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const slides = [
     {
@@ -101,7 +115,7 @@ const History: React.FC = () => {
       role="region"
       aria-label="História da D'Mens Barbearia"
       style={{
-        backgroundImage: `url(${ativo05})`,
+        backgroundImage: `url(${isMobile ? ativo05Mobile : ativo05Full})`,
         backgroundSize: '100% 100%',
         backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
