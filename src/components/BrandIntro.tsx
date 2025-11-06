@@ -106,6 +106,7 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
         setIsVisible(false);
         if (onComplete) onComplete();
         document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
       }, 1600);
     }, 300); // Pausa de 300ms no último frame
   };
@@ -118,8 +119,8 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
     setTimeout(() => {
       setIsVisible(false);
       if (onComplete) onComplete();
-      document.body.style.overflowX = 'auto';
-      document.documentElement.style.overflowX = 'auto';
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
     }, 500);
   };
 
@@ -138,6 +139,7 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
         setIsVisible(false);
         if (onComplete) onComplete();
         document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
       }, 1600);
     }
   };

@@ -18,15 +18,25 @@ import LiveRegion from './LiveRegion';
 import ativo6Background from '../assets/Ativo 6.png';
 
 const LandingPage: React.FC = () => {
-  const [showContent, setShowContent] = useState(true); // Já inicia true
+  const [showContent, setShowContent] = useState(false); // INICIA FALSE - só mostra após intro
 
   useEffect(() => {
+    // SEMPRE voltar ao topo ao carregar/recarregar
+    window.scrollTo(0, 0);
+    
     // Verificar se a intro já foi reproduzida
     const introPlayed = sessionStorage.getItem('brandIntroPlayed');
     if (introPlayed === 'true') {
       setShowContent(true);
     }
+    
+    // BLOQUEAR SCROLL durante a intro
+    if (!introPlayed || introPlayed !== 'true') {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
   }, []);
+  
   useEffect(() => {
     // Definir background do body - ATIVO6 REMOVIDO TEMPORARIAMENTE
     // document.body.style.backgroundImage = `url(${ativo6Background})`;
@@ -72,58 +82,65 @@ const LandingPage: React.FC = () => {
   return (
     <LiveRegion>
       {/* Vídeo de Introdução da Marca */}
-      <BrandIntro onComplete={() => setShowContent(true)} />
+      <BrandIntro onComplete={() => {
+        setShowContent(true);
+        // LIBERAR SCROLL quando intro terminar
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
+      }} />
       
-      {/* Conteúdo do Site - sempre visível, por trás do vídeo */}
-      <div
-        className="min-h-screen bg-transparent relative"
-        lang="pt-BR"
-      >
-        {/* Skip Links */}
-        <div className="sr-only">
-          <a href="#main-content" className="skip-link">
-            Pular para o conteúdo principal
-          </a>
-          <a href="#servicos" className="skip-link">
-            Pular para serviços
-          </a>
-          <a href="#cursos" className="skip-link">
-            Pular para cursos
-          </a>
-          <a href="#unidades" className="skip-link">
-            Pular para unidades
-          </a>
+      {/* Conteúdo do Site - SÓ RENDERIZA APÓS INTRO */}
+      {showContent && (
+        <div
+          className="min-h-screen bg-transparent relative overflow-x-hidden"
+          lang="pt-BR"
+        >
+          {/* Skip Links */}
+          <div className="sr-only">
+            <a href="#main-content" className="skip-link">
+              Pular para o conteúdo principal
+            </a>
+            <a href="#servicos" className="skip-link">
+              Pular para serviços
+            </a>
+            <a href="#cursos" className="skip-link">
+              Pular para cursos
+            </a>
+            <a href="#unidades" className="skip-link">
+              Pular para unidades
+            </a>
+          </div>
+          
+          <TestBackground />
+          
+          {/* Main Content */}
+          <div className="relative overflow-x-hidden">
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Header />
+                <main id="main-content" role="main">
+                  <Hero startAnimations={true} />
+                  <BrandBanner />
+                  <History />
+                  <ServicesMarquee />
+                  <Services />
+                  <SocialProof />
+                  <Courses />
+                  <Units />
+                  <BrandBanner />
+                  <FAQ />
+                  <FinalCTA />
+                </main>
+                <FloatingWhatsApp />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
-        
-        <TestBackground />
-        
-        {/* Main Content */}
-        <div className="relative">
-          <AnimatePresence>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Header />
-              <main id="main-content" role="main">
-                <Hero startAnimations={showContent} />
-                <BrandBanner />
-                <History />
-                <ServicesMarquee />
-                <Services />
-                <SocialProof />
-                <Courses />
-                <Units />
-                <BrandBanner />
-                <FAQ />
-                <FinalCTA />
-              </main>
-              <FloatingWhatsApp />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
+      )}
     </LiveRegion>
   );
 };

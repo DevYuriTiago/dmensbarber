@@ -154,7 +154,7 @@ const History: React.FC = () => {
       </div>
 
       {/* Slideshow Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative" style={{ zIndex: 5 }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-x-clip" style={{ zIndex: 5 }}>
         <div className="relative">
           {/* Main Slide */}
           <AnimatePresence mode="wait" custom={direction}>
