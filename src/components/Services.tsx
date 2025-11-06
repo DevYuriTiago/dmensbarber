@@ -115,7 +115,9 @@ const Services: React.FC = () => {
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-dmens-orange mb-3 md:mb-4">
             Nossos Planos
           </h2>
-          <p className="text-2xl md:text-3xl text-white max-w-4xl mx-auto font-body leading-relaxed drop-shadow-lg">
+          <p className={`text-2xl md:text-3xl max-w-4xl mx-auto font-body leading-relaxed drop-shadow-lg ${
+            isMobile ? 'text-dmens-orange' : 'text-white'
+          }`}>
             Experiências únicas que combinam tradição e modernidade para o homem contemporâneo
           </p>
         </motion.div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './BrandIntro.css';
+import logoSimbolo from '../assets/LOGO - SÍMBOLO - PADRÃO.png';
 
 interface BrandIntroProps {
   onComplete?: () => void;
@@ -11,6 +12,7 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
   const [isDiagonalOpen, setIsDiagonalOpen] = useState(false);
   const [showDivision, setShowDivision] = useState(false);
   const [lastFrameImage, setLastFrameImage] = useState<string>('');
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -26,6 +28,39 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
       if (onComplete) onComplete();
       return;
     }
+    
+    // Detectar se é mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    // BLOQUEAR APENAS SCROLL HORIZONTAL durante a intro
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflowX = 'hidden';
+    
+    // Se for mobile, iniciar animação da logo após um delay
+    if (window.innerWidth < 768) {
+      const timer = setTimeout(() => {
+        handleMobileIntroEnd();
+      }, 3000); // 3 segundos de animação da logo
+      
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflowX = 'auto';
+        document.documentElement.style.overflowX = 'auto';
+        window.removeEventListener('resize', checkMobile);
+      };
+    }
+    
+    return () => {
+      // Restaurar scroll quando o componente for desmontado
+      document.body.style.overflowX = 'auto';
+      document.documentElement.style.overflowX = 'auto';
+      window.removeEventListener('resize', checkMobile);
+    };
   }, [onComplete]);
 
   const captureLastFrame = () => {
@@ -75,22 +110,114 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
     }, 300); // Pausa de 300ms no último frame
   };
 
-  const handleSkip = () => {
-    console.log('Skip clicado');
-    captureLastFrame();
+  const handleMobileIntroEnd = () => {
+    console.log('Mobile intro terminando');
     sessionStorage.setItem('brandIntroPlayed', 'true');
-    setShowDivision(true);
-    setIsDiagonalOpen(true);
     
+    // Fade out direto
     setTimeout(() => {
       setIsVisible(false);
       if (onComplete) onComplete();
-      document.body.style.overflow = 'auto';
-    }, 1600);
+      document.body.style.overflowX = 'auto';
+      document.documentElement.style.overflowX = 'auto';
+    }, 500);
+  };
+
+  const handleSkip = () => {
+    console.log('Skip clicado');
+    
+    if (isMobile) {
+      handleMobileIntroEnd();
+    } else {
+      captureLastFrame();
+      sessionStorage.setItem('brandIntroPlayed', 'true');
+      setShowDivision(true);
+      setIsDiagonalOpen(true);
+      
+      setTimeout(() => {
+        setIsVisible(false);
+        if (onComplete) onComplete();
+        document.body.style.overflow = 'auto';
+      }, 1600);
+    }
   };
 
   if (!isVisible) return null;
 
+  // INTRO MOBILE - Animação estilo Netflix
+  if (isMobile) {
+    return (
+      <>
+        {/* Fundo preto */}
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, delay: 2.5 }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: '#000',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {/* Logo com animação estilo Netflix */}
+          <motion.img
+            src={logoSimbolo}
+            alt="D'Mens Barbearia"
+            initial={{ scale: 0.3, opacity: 0 }}
+            animate={{ 
+              scale: [0.3, 1.2, 1],
+              opacity: [0, 1, 1, 0]
+            }}
+            transition={{
+              duration: 3,
+              times: [0, 0.4, 0.7, 1],
+              ease: [0.43, 0.13, 0.23, 0.96]
+            }}
+            style={{
+              width: '60%',
+              maxWidth: '300px',
+              height: 'auto',
+              filter: 'drop-shadow(0 0 40px rgba(201, 160, 99, 0.5))'
+            }}
+          />
+        </motion.div>
+
+        {/* Botão Skip Mobile */}
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          onClick={handleSkip}
+          style={{
+            position: 'fixed',
+            bottom: '2rem',
+            right: '1.5rem',
+            zIndex: 10000,
+            background: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(12px)',
+            color: 'white',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '0.375rem',
+            fontWeight: 600,
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            cursor: 'pointer',
+            fontSize: '0.875rem',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          Pular
+        </motion.button>
+      </>
+    );
+  }
+
+  // INTRO DESKTOP - Vídeo original
   return (
     <>
       {/* Canvas oculto para capturar o último frame */}
@@ -116,46 +243,55 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
         <source src="/Brand_Intro_Video_Generation.mp4" type="video/mp4" />
       </video>
 
-      {/* Divisão visual com imagem estática do último frame */}
-      {showDivision && lastFrameImage && (
-        <>
-          {/* Parte Superior (triângulo) */}
-          <div
-            style={{
-              position: 'fixed',
-              inset: 0,
-              width: '100vw',
-              height: '100vh',
-              zIndex: 9998,
-              clipPath: 'polygon(0 0, 100% 0, 0 100%)',
-              transform: isDiagonalOpen ? 'translate(-110%, -110%) rotate(-3deg)' : 'translate(0, 0) rotate(0deg)',
-              transition: 'transform 1.5s cubic-bezier(0.77, 0, 0.175, 1)',
-              willChange: 'transform',
-              backgroundImage: `url(${lastFrameImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-          />
+      {/* Container para evitar overflow */}
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        overflow: 'hidden',
+        zIndex: 9997,
+        pointerEvents: isDiagonalOpen ? 'none' : 'auto'
+      }}>
+        {/* Divisão visual com imagem estática do último frame */}
+        {showDivision && lastFrameImage && (
+          <>
+            {/* Parte Superior (triângulo) */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: 9998,
+                clipPath: 'polygon(0 0, 100% 0, 0 100%)',
+                transform: isDiagonalOpen ? 'translate(-110%, -110%) rotate(-3deg)' : 'translate(0, 0) rotate(0deg)',
+                transition: 'transform 1.5s cubic-bezier(0.77, 0, 0.175, 1)',
+                willChange: 'transform',
+                backgroundImage: `url(${lastFrameImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
 
-          {/* Parte Inferior (triângulo) */}
-          <div
-            style={{
-              position: 'fixed',
-              inset: 0,
-              width: '100vw',
-              height: '100vh',
-              zIndex: 9998,
-              clipPath: 'polygon(100% 0, 100% 100%, 0 100%)',
-              transform: isDiagonalOpen ? 'translate(110%, 110%) rotate(3deg)' : 'translate(0, 0) rotate(0deg)',
-              transition: 'transform 1.5s cubic-bezier(0.77, 0, 0.175, 1)',
-              willChange: 'transform',
-              backgroundImage: `url(${lastFrameImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-          />
-        </>
-      )}
+            {/* Parte Inferior (triângulo) */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: 9998,
+                clipPath: 'polygon(100% 0, 100% 100%, 0 100%)',
+                transform: isDiagonalOpen ? 'translate(110%, 110%) rotate(3deg)' : 'translate(0, 0) rotate(0deg)',
+                transition: 'transform 1.5s cubic-bezier(0.77, 0, 0.175, 1)',
+                willChange: 'transform',
+                backgroundImage: `url(${lastFrameImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
+          </>
+        )}
+      </div>
 
       {/* Botão Skip */}
       {!isDiagonalOpen && (

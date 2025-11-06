@@ -8,6 +8,7 @@ const History: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [direction, setDirection] = useState(1); // 1 = próximo (direita), -1 = anterior (esquerda)
   const sectionRef = useRef<HTMLElement>(null);
 
   // Detecta se é mobile
@@ -54,7 +55,7 @@ const History: React.FC = () => {
       id: 4,
       title: "Mestre Barbeiro",
       subtitle: "Experiência e Dedicação",
-      text: "Nosso fundador e mestre barbeiro possui mais de 15 anos de experiência na arte da barbearia. Formado pelas melhores escolas do país e com certificações internacionais, ele lidera nossa equipe com paixão e dedicação, garantindo que cada cliente receba o melhor atendimento.",
+      text: "Nosso fundador possui mais de 15 anos de experiência na arte da barbearia. Formado pelas melhores escolas e com certificações internacionais, lidera nossa equipe com paixão e dedicação.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
       icon: Clock,
       stats: "15+ anos de experiência"
@@ -89,21 +90,25 @@ const History: React.FC = () => {
     if (!isVisible) return; // Só executa se a seção estiver visível
 
     const timer = setInterval(() => {
+      setDirection(1); // Sempre vai pra direita no auto-advance
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 7000); // 7 seconds per slide
+    }, 7000); // 7 seconds per slide - FIXO para todos
 
     return () => clearInterval(timer);
-  }, [slides.length, isVisible]); // Adiciona isVisible como dependência
+  }, [isVisible]); // Remove slides.length para não resetar o timer
 
   const nextSlide = () => {
+    setDirection(1); // Direção: próximo (esquerda → direita)
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
+    setDirection(-1); // Direção: anterior (direita → esquerda)
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const goToSlide = (index: number) => {
+    setDirection(index > currentSlide ? 1 : -1); // Define direção baseado no índice
     setCurrentSlide(index);
   };
 
@@ -152,18 +157,19 @@ const History: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative" style={{ zIndex: 5 }}>
         <div className="relative">
           {/* Main Slide */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, x: 300 }}
+              custom={direction}
+              initial={{ opacity: 0, x: direction > 0 ? 300 : -300 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -300 }}
+              exit={{ opacity: 0, x: direction > 0 ? -300 : 300 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
               className="bg-white rounded-3xl shadow-2xl overflow-hidden"
             >
               <div className="grid lg:grid-cols-2 gap-0">
                 {/* Image Section */}
-                <div className="relative h-96 lg:h-auto overflow-hidden">
+                <div className="relative h-96 lg:h-[500px] overflow-hidden">
                   <img
                     src={slides[currentSlide].image}
                     alt={slides[currentSlide].title}
@@ -211,10 +217,10 @@ const History: React.FC = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - SEMPRE fora do card */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white text-dmens-orange rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+            className="absolute left-0 -translate-x-1/2 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white text-dmens-orange rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
             aria-label="Slide anterior"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -222,7 +228,7 @@ const History: React.FC = () => {
           
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white text-dmens-orange rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+            className="absolute right-0 translate-x-1/2 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-white text-dmens-orange rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
             aria-label="Próximo slide"
           >
             <ChevronRight className="w-6 h-6" />
@@ -237,8 +243,8 @@ const History: React.FC = () => {
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide 
-                  ? 'bg-white scale-125' 
-                  : 'bg-white/50 hover:bg-white/75'
+                  ? 'bg-dmens-blue scale-125'
+                  : 'bg-dmens-blue/50 hover:bg-dmens-blue/75'
               }`}
               aria-label={`Ir para slide ${index + 1}`}
             />
@@ -247,15 +253,15 @@ const History: React.FC = () => {
 
         {/* Progress Bar */}
         <div className="mt-8 max-w-md mx-auto">
-          <div className="h-1 bg-white/30 rounded-full overflow-hidden">
+          <div className="h-1 bg-dmens-blue/30 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-white rounded-full"
+              className="h-full bg-dmens-blue rounded-full"
               initial={{ width: "0%" }}
               animate={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
               transition={{ duration: 0.3 }}
             />
           </div>
-          <p className="text-center text-white/80 mt-2 text-sm">
+          <p className="text-center text-dmens-blue/90 mt-2 text-sm">
             {currentSlide + 1} de {slides.length}
           </p>
         </div>

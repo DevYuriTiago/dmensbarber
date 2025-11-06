@@ -152,7 +152,7 @@ const SocialProof: React.FC = () => {
                   <img 
                     src={stat.icon} 
                     alt={stat.icon === tesouraIcon ? "Tesoura" : "Navalha Retrô"} 
-                    className="w-8 h-8" 
+                    className={stat.icon === navalhaRetro ? "w-12 h-12" : "w-8 h-8"}
                     style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)' }}
                   />
                 ) : (
