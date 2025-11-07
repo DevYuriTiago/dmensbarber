@@ -35,6 +35,9 @@ const LandingPage: React.FC = () => {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
     }
+    
+    // Background SEMPRE azul da marca
+    document.body.style.backgroundColor = '#0a1628';
   }, []);
   
   useEffect(() => {
@@ -45,7 +48,7 @@ const LandingPage: React.FC = () => {
     document.body.style.backgroundPosition = 'center center';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.backgroundColor = '#ffffff';
+    // backgroundColor removido - já definido no primeiro useEffect como azul da marca
 
     // Smooth scrolling for anchor links
     const handleSmoothScroll = (e: Event) => {
@@ -87,6 +90,11 @@ const LandingPage: React.FC = () => {
         // LIBERAR SCROLL quando intro terminar
         document.body.style.overflow = 'auto';
         document.documentElement.style.overflow = 'auto';
+        
+        // MUDAR para branco 1.5 segundos APÓS conteúdo carregar
+        setTimeout(() => {
+          document.body.style.backgroundColor = '#ffffff';
+        }, 1500);
       }} />
       
       {/* Conteúdo do Site - SÓ RENDERIZA APÓS INTRO */}
@@ -119,7 +127,7 @@ const LandingPage: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0 }}
               >
                 <Header />
                 <main id="main-content" role="main">
