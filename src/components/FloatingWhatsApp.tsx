@@ -7,6 +7,7 @@ import chatIcon from '../assets/chat.png';
 const FloatingWhatsApp: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showChatBox, setShowChatBox] = useState(false);
+  const [isInHistorySection, setIsInHistorySection] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -14,6 +15,46 @@ const FloatingWhatsApp: React.FC = () => {
     }, 2000);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  // Observar seção de História para mudar cor do botão
+  useEffect(() => {
+    const historySection = document.getElementById('historia');
+    const servicesSection = document.getElementById('nossos-servicos');
+    
+    if (!historySection || !servicesSection) return;
+
+    const historyObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInHistorySection(true);
+        }
+      },
+      {
+        threshold: 0.15, // 15% da seção visível
+        rootMargin: '0px'
+      }
+    );
+
+    const servicesObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInHistorySection(false); // Desativa o azul quando serviços fica visível
+        }
+      },
+      {
+        threshold: 0.1, // 10% da seção visível
+        rootMargin: '0px'
+      }
+    );
+
+    historyObserver.observe(historySection);
+    servicesObserver.observe(servicesSection);
+
+    return () => {
+      historyObserver.disconnect();
+      servicesObserver.disconnect();
+    };
   }, []);
 
   const handleClick = () => {
@@ -43,11 +84,17 @@ const FloatingWhatsApp: React.FC = () => {
             onMouseEnter={() => setShowChatBox(true)}
             onMouseLeave={() => setShowChatBox(false)}
             animate={{
-              boxShadow: [
-                '0 0 0 0 rgba(254, 76, 2, 0.7)',
-                '0 0 0 10px rgba(254, 76, 2, 0)',
-                '0 0 0 0 rgba(254, 76, 2, 0)'
-              ]
+              boxShadow: isInHistorySection 
+                ? [
+                    '0 0 0 0 rgba(10, 22, 40, 0.7)',
+                    '0 0 0 10px rgba(10, 22, 40, 0)',
+                    '0 0 0 0 rgba(10, 22, 40, 0)'
+                  ]
+                : [
+                    '0 0 0 0 rgba(254, 76, 2, 0.7)',
+                    '0 0 0 10px rgba(254, 76, 2, 0)',
+                    '0 0 0 0 rgba(254, 76, 2, 0)'
+                  ]
             }}
             transition={{
               boxShadow: {
@@ -56,7 +103,11 @@ const FloatingWhatsApp: React.FC = () => {
                 ease: "easeInOut"
               }
             }}
-            className="relative w-14 h-14 md:w-16 md:h-16 bg-dmens-orange hover:bg-orange-600 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-dmens-orange/25 focus:ring-offset-2"
+            className={`relative w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 focus:outline-none focus:ring-4 focus:ring-offset-2 ${
+              isInHistorySection 
+                ? 'bg-dmens-blue hover:bg-blue-800 focus:ring-dmens-blue/25' 
+                : 'bg-dmens-orange hover:bg-orange-600 focus:ring-dmens-orange/25'
+            }`}
             aria-label="Conversar no WhatsApp"
             title="Clique para falar conosco no WhatsApp"
           >
@@ -88,7 +139,7 @@ const FloatingWhatsApp: React.FC = () => {
                 onMouseEnter={() => setShowChatBox(true)}
                 onMouseLeave={() => setShowChatBox(false)}
               >
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-4 max-w-xs relative border border-gray-200">
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-4 w-72 relative border border-gray-200">
                   <button
                     onClick={() => setShowChatBox(false)}
                     className="absolute -top-2 -right-2 w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors"
@@ -98,7 +149,7 @@ const FloatingWhatsApp: React.FC = () => {
                   
                   <div className="flex items-start space-x-3">
                     <div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-dmens-blue"
+                      className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 bg-dmens-blue"
                     >
                       <img 
                         src={dmensSymbol} 
@@ -106,9 +157,9 @@ const FloatingWhatsApp: React.FC = () => {
                         className="w-5 h-5 object-contain"
                       />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h4 className="font-semibold text-gray-800 text-sm">D'Mens Barbearia</h4>
-                      <p className="text-gray-600 text-xs mt-1">
+                      <p className="text-gray-600 text-xs leading-relaxed mt-1">
                         Olá! 👋 Posso ajudar você com agendamentos ou informações sobre nossos cursos?
                       </p>
                       <p className="text-gray-400 text-xs mt-2">

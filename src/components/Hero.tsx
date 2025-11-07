@@ -86,90 +86,44 @@ const Hero: React.FC<HeroProps> = ({ startAnimations = true }) => {
         ))}
       </div>
 
-      {/* Decorative Ativo4 Elements - Blurred in foreground */}
+      {/* Decorative Ativo4 Elements - 2 elementos verticais */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Ativo4 - Esquerda Superior */}
+        {/* Ativo4 - Esquerda (Vertical) */}
         <motion.img
           src={ativo4}
           alt=""
-          initial={{ opacity: 0, x: -100, rotate: -15 }}
+          initial={{ opacity: 0, x: -50 }}
           animate={{ 
-            opacity: 0.4,
+            opacity: 0.3,
             x: 0,
-            rotate: -10,
-            y: [0, 20, 0]
+            y: [0, 15, 0]
           }}
           transition={{
             opacity: { duration: 1 },
             x: { duration: 1 },
-            rotate: { duration: 1 },
             y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="absolute -left-20 top-40 w-48 md:w-64 lg:w-80 opacity-40"
-          style={{ filter: 'blur(2px)' }}
+          className="absolute left-4 md:left-12 top-1/3 w-16 md:w-24 lg:w-32 h-auto opacity-30"
+          style={{ filter: 'blur(1px)' }}
         />
 
-        {/* Ativo4 - Direita Meio */}
+        {/* Ativo4 - Direita (Vertical) */}
         <motion.img
           src={ativo4}
           alt=""
-          initial={{ opacity: 0, x: 100, rotate: 15 }}
+          initial={{ opacity: 0, x: 50 }}
           animate={{ 
             opacity: 0.3,
             x: 0,
-            rotate: 20,
-            y: [0, -30, 0]
+            y: [0, -15, 0]
           }}
           transition={{
             opacity: { duration: 1.2, delay: 0.3 },
             x: { duration: 1.2, delay: 0.3 },
-            rotate: { duration: 1.2, delay: 0.3 },
             y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
           }}
-          className="absolute -right-16 top-1/3 w-40 md:w-56 lg:w-72 opacity-30"
-          style={{ filter: 'blur(3px)' }}
-        />
-
-        {/* Ativo4 - Esquerda Inferior */}
-        <motion.img
-          src={ativo4}
-          alt=""
-          initial={{ opacity: 0, x: -100, rotate: 25 }}
-          animate={{ 
-            opacity: 0.35,
-            x: 0,
-            rotate: 15,
-            y: [0, 25, 0]
-          }}
-          transition={{
-            opacity: { duration: 1.5, delay: 0.6 },
-            x: { duration: 1.5, delay: 0.6 },
-            rotate: { duration: 1.5, delay: 0.6 },
-            y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }
-          }}
-          className="absolute -left-24 bottom-32 w-52 md:w-72 lg:w-96 opacity-35"
-          style={{ filter: 'blur(4px)' }}
-        />
-
-        {/* Ativo4 - Direita Inferior (Mobile hidden) */}
-        <motion.img
-          src={ativo4}
-          alt=""
-          initial={{ opacity: 0, x: 100, rotate: -20 }}
-          animate={{ 
-            opacity: 0.25,
-            x: 0,
-            rotate: -15,
-            y: [0, -20, 0]
-          }}
-          transition={{
-            opacity: { duration: 1.8, delay: 0.9 },
-            x: { duration: 1.8, delay: 0.9 },
-            rotate: { duration: 1.8, delay: 0.9 },
-            y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
-          }}
-          className="hidden md:block absolute -right-20 bottom-20 w-36 md:w-48 lg:w-64 opacity-25"
-          style={{ filter: 'blur(5px)' }}
+          className="absolute right-4 md:right-12 top-1/3 w-16 md:w-24 lg:w-32 h-auto opacity-30"
+          style={{ filter: 'blur(1px)' }}
         />
       </div>
 

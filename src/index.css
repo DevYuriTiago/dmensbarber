@@ -34,6 +34,41 @@ html, body {
   font-family: 'Roboto Slab', serif;
 }
 
+/* Custom Scrollbar - D'Mens Brand Style */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #FE4C02 #0a1628;
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0a1628;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FE4C02 0%, #ff6a26 100%);
+  border-radius: 10px;
+  border: 2px solid #0a1628;
+  transition: all 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff6a26 0%, #FE4C02 100%);
+  border: 2px solid #1a2638;
+  box-shadow: 0 0 10px rgba(254, 76, 2, 0.5);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: #FE4C02;
+}
+
 #root {
   position: relative;
   min-height: 100vh;
