@@ -80,15 +80,11 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
         // Converter canvas para imagem base64
         const imageData = canvas.toDataURL('image/png');
         setLastFrameImage(imageData);
-        
-        console.log('Último frame capturado!');
       }
     }
   };
 
   const handleVideoEnd = () => {
-    console.log('Vídeo terminou - capturando último frame');
-    
     // Capturar o último frame do vídeo
     captureLastFrame();
     
@@ -97,7 +93,6 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
     
     // Pequena pausa no último frame antes de abrir
     setTimeout(() => {
-      console.log('Iniciando abertura diagonal');
       sessionStorage.setItem('brandIntroPlayed', 'true');
       setIsDiagonalOpen(true);
       
@@ -112,7 +107,6 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
   };
 
   const handleMobileIntroEnd = () => {
-    console.log('Mobile intro terminando');
     sessionStorage.setItem('brandIntroPlayed', 'true');
     
     // Fade out direto
@@ -125,8 +119,6 @@ const BrandIntro: React.FC<BrandIntroProps> = ({ onComplete }) => {
   };
 
   const handleSkip = () => {
-    console.log('Skip clicado');
-    
     if (isMobile) {
       handleMobileIntroEnd();
     } else {

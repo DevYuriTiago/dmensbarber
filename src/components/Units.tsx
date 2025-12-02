@@ -12,7 +12,7 @@ const Units: React.FC = () => {
       city: "Olinda - PE",
       hours: "Seg-Sex: 9h às 20h | Sáb: 8h às 19h",
       parking: "Estacionamento próprio",
-      image: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80",
+      image: "/fachada-Tabajara.jpeg",
       rating: 4.9,
       clients: "1000+",
       features: [
@@ -29,7 +29,7 @@ const Units: React.FC = () => {
       city: "Olinda - PE", 
       hours: "Seg-Sex: 9h às 20h | Sáb: 8h às 19h",
       parking: "Estacionamento disponível",
-      image: "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=800&q=80",
+      image: "/fachada-Jardim.jpg",
       rating: 4.9,
       clients: "1000+",
       features: [

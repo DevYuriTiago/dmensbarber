@@ -1,149 +1,91 @@
 import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { Zap, Sparkles, Crown, Coffee, User } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Scissors } from 'lucide-react';
 import tesouraIcon from '../assets/tesoura.png';
 
 const ServicesMarquee: React.FC = () => {
-  const [isHoveredFirst, setIsHoveredFirst] = React.useState(false);
-  const [isHoveredSecond, setIsHoveredSecond] = React.useState(false);
-  const controlsFirst = useAnimation();
-  const controlsSecond = useAnimation();
-
   const services = [
     {
       id: 1,
-      title: 'Esfoliação Facial',
-      description: 'Limpeza profunda com esfoliação para remover impurezas e células mortas da pele.',
-      image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
+      title: 'Barba com Ozonioterapia',
+      description: 'Tratamento de barba com ozonioterapia para desinfecção e revitalização profunda.',
+      image: '/serviços/barba-com-ozonioterapia.webp',
       icon: tesouraIcon
     },
     {
       id: 2,
-      title: 'Epilação Nasal',
-      description: 'Remoção de pelos do nariz com técnica segura e indolor.',
-      image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80',
-      icon: Zap
+      title: 'Corte',
+      description: 'Corte de cabelo profissional com técnicas modernas e acabamento impecável.',
+      image: '/serviços/corte.webp',
+      icon: Scissors
     },
     {
       id: 3,
-      title: 'Pé e Mão Aveludado',
-      description: 'Tratamento completo para pés e mãos deixando a pele macia e hidratada.',
-      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80',
-      icon: Sparkles
+      title: 'Corte Infantil',
+      description: 'Corte especializado para crianças com atendimento cuidadoso e descontraído.',
+      image: '/serviços/corte-infantil.webp',
+      icon: Scissors
     },
     {
       id: 4,
-      title: 'Higienização Capilar',
-      description: 'Limpeza profunda do couro cabeludo para cabelos mais saudáveis.',
-      image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80',
-      icon: Crown
+      title: 'Epilação Nasal',
+      description: 'Remoção de pelos do nariz com técnica segura e indolor.',
+      image: '/serviços/epilacao-nasal.webp',
+      icon: tesouraIcon
     },
     {
       id: 5,
-      title: 'Hidratação Cabelo ou Barba',
-      description: 'Hidratação intensiva para cabelo ou barba com produtos premium.',
-      image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80',
-      icon: User
+      title: 'Esfoliação Facial',
+      description: 'Limpeza profunda com esfoliação para remover impurezas e células mortas da pele.',
+      image: '/serviços/esfoliacao-facial.webp',
+      icon: tesouraIcon
     },
     {
       id: 6,
-      title: 'Sobrancelha',
-      description: 'Design e modelagem de sobrancelhas para um visual marcante.',
-      image: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=80',
-      icon: Coffee
+      title: 'Higienização Capilar',
+      description: 'Limpeza profunda do couro cabeludo para cabelos mais saudáveis.',
+      image: '/serviços/higienizacao-capilar.webp',
+      icon: tesouraIcon
     },
     {
       id: 7,
-      title: 'Coloração Cabelo',
-      description: 'Coloração profissional de cabelo com produtos de alta qualidade.',
-      image: 'https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?auto=format&fit=crop&w=800&q=80',
+      title: 'Luzes',
+      description: 'Aplicação de luzes e mechas para um visual moderno e iluminado.',
+      image: '/serviços/luzes.webp',
       icon: tesouraIcon
     },
     {
       id: 8,
-      title: 'Coloração Barba',
-      description: 'Coloração especializada para barba com tons naturais.',
-      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
-      icon: Zap
-    },
-    {
-      id: 9,
-      title: 'Pezinho',
-      description: 'Acabamento perfeito na nuca e contornos para um visual impecável.',
-      image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80',
-      icon: Sparkles
-    },
-    {
-      id: 10,
-      title: 'Alisamento',
-      description: 'Alisamento profissional para cabelos mais lisos e disciplinados.',
-      image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80',
-      icon: Crown
-    },
-    {
-      id: 11,
-      title: 'Selagem',
-      description: 'Selagem capilar para proteção e brilho intenso.',
-      image: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80',
-      icon: User
-    },
-    {
-      id: 12,
-      title: 'Luzes',
-      description: 'Aplicação de luzes e mechas para um visual moderno.',
-      image: 'https://images.unsplash.com/photo-1534438097545-f8c41e537e0c?auto=format&fit=crop&w=800&q=80',
-      icon: Coffee
-    },
-    {
-      id: 13,
-      title: 'Platinado Global',
-      description: 'Descoloração completa para um visual platinado exclusivo.',
-      image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80',
+      title: 'Máscara Black',
+      description: 'Tratamento com máscara black para limpeza profunda dos poros.',
+      image: '/serviços/mascara-black.webp',
       icon: tesouraIcon
     },
     {
-      id: 14,
-      title: 'Corte + Barba',
-      description: 'Serviço completo com corte de cabelo e barba modelada.',
-      image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=800&q=80',
-      icon: Zap
+      id: 9,
+      title: 'Platinado',
+      description: 'Descoloração completa para um visual platinado exclusivo e marcante.',
+      image: '/serviços/platinado.webp',
+      icon: tesouraIcon
+    },
+    {
+      id: 10,
+      title: 'Selagem',
+      description: 'Selagem capilar para proteção, brilho intenso e fios disciplinados.',
+      image: '/serviços/selagem.webp',
+      icon: tesouraIcon
+    },
+    {
+      id: 11,
+      title: 'Sobrancelha',
+      description: 'Design e modelagem de sobrancelhas para um visual marcante.',
+      image: '/serviços/sobrancelha.webp',
+      icon: tesouraIcon
     }
   ];
 
-  // Duplicar os serviços para criar o efeito infinito
-  const extendedServices = [...services, ...services];
-
-  // Efeito para controlar a animação do primeiro marquee
-  React.useEffect(() => {
-    if (!isHoveredFirst) {
-      controlsFirst.start({
-        x: [0, -100 * services.length],
-        transition: {
-          duration: 60,
-          repeat: Infinity,
-          ease: "linear"
-        }
-      });
-    } else {
-      controlsFirst.stop();
-    }
-  }, [isHoveredFirst, controlsFirst, services.length]);
-
-  // Efeito para controlar a animação do segundo marquee
-  React.useEffect(() => {
-    if (!isHoveredSecond) {
-      controlsSecond.start({
-        x: [-100 * services.length, 0],
-        transition: {
-          duration: 60,
-          repeat: Infinity,
-          ease: "linear"
-        }
-      });
-    } else {
-      controlsSecond.stop();
-    }
-  }, [isHoveredSecond, controlsSecond, services.length]);
+  // Duplicar os serviços 3 vezes para garantir loop infinito perfeito
+  const extendedServices = [...services, ...services, ...services];
 
   return (
     <section 
@@ -177,118 +119,132 @@ const ServicesMarquee: React.FC = () => {
           </motion.p>
         </motion.div>
       </div>      {/* Marquee Container */}
-      <div className="relative">
+      <div className="relative py-16">
         {/* Gradientes nas bordas para efeito fade */}
         <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-white/60 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 w-16 md:w-32 h-full bg-gradient-to-l from-white/60 to-transparent z-10 pointer-events-none" />
         
         {/* Marquee principal - direção normal */}
-        <motion.div
-          drag="x"
-          dragConstraints={{ left: -100 * services.length, right: 0 }}
-          dragElastic={0.1}
-          onHoverStart={() => setIsHoveredFirst(true)}
-          onHoverEnd={() => setIsHoveredFirst(false)}
-          animate={controlsFirst}
-          className="flex space-x-4 md:space-x-8 mb-8 cursor-grab active:cursor-grabbing"
-          style={{ width: `${200 * services.length}%` }}
-        >
-          {extendedServices.map((service, index) => (
-            <motion.div
-              key={`${service.id}-${index}`}
-              className="flex-shrink-0 w-80 md:w-96 bg-white rounded-2xl md:rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group"
-              whileHover={{ scale: 1.05, y: -10 }}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-            >
-              {/* Imagem do Serviço */}
-              <div className="relative h-48 md:h-64 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {/* Ícone do Serviço */}
-                <div className="absolute top-3 md:top-4 right-3 md:right-4 p-2 md:p-3 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
-                  {service.icon === tesouraIcon ? (<img src={service.icon} alt="Tesoura" className="w-5 h-5 md:w-6 md:h-6" style={{ filter: "invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)" }} />) : (<service.icon className="w-5 h-5 md:w-6 md:h-6 text-dmens-orange" />)}
+        <div className="mb-12 overflow-x-hidden">
+          <motion.div
+            animate={{
+              x: [0, -(services.length * 272)],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 45,
+                ease: "linear",
+              },
+            }}
+            className="flex space-x-6"
+          >
+            {extendedServices.map((service, index) => (
+              <motion.div
+                key={`${service.id}-${index}`}
+                className="flex-shrink-0 w-64 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group"
+                whileHover={{ scale: 1.05, y: -8, zIndex: 20 }}
+              >
+                {/* Imagem do Serviço - Proporção 3:4 (Retrato) */}
+                <div className="relative h-[340px] overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  
+                  {/* Ícone do Serviço */}
+                  <div className="absolute top-3 right-3 p-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+                    {service.icon === tesouraIcon ? (
+                      <img src={service.icon} alt="Tesoura" className="w-5 h-5" style={{ filter: "invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)" }} />
+                    ) : (
+                      <service.icon className="w-5 h-5 text-dmens-orange" />
+                    )}
+                  </div>
+                  
+                  {/* Overlay com efeito hover */}
+                  <div className="absolute inset-0 bg-dmens-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                
-                {/* Overlay com efeito hover */}
-                <div className="absolute inset-0 bg-dmens-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
 
-              {/* Conteúdo do Card */}
-              <div className="p-6 md:p-8">
-                <h3 className="text-xl md:text-2xl font-display font-bold text-dmens-blue mb-3 md:mb-4 group-hover:text-dmens-orange transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 font-body leading-relaxed text-base md:text-lg">
-                  {service.description}
-                </p>
-                
-                {/* Decoração */}
-                <div className="mt-4 md:mt-6 h-1 w-12 md:w-16 bg-dmens-orange rounded-full group-hover:w-20 md:group-hover:w-24 transition-all duration-300" />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Conteúdo do Card */}
+                <div className="p-5">
+                  <h3 className="text-lg font-display font-bold text-dmens-blue mb-2 group-hover:text-dmens-orange transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 font-body leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                  
+                  {/* Decoração */}
+                  <div className="mt-4 h-1 w-12 bg-dmens-orange rounded-full group-hover:w-16 transition-all duration-300" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
 
         {/* Marquee reverso - direção oposta */}
-        <motion.div
-          drag="x"
-          dragConstraints={{ left: 0, right: 100 * services.length }}
-          dragElastic={0.1}
-          onHoverStart={() => setIsHoveredSecond(true)}
-          onHoverEnd={() => setIsHoveredSecond(false)}
-          animate={controlsSecond}
-          className="flex space-x-4 md:space-x-8 space-x-reverse cursor-grab active:cursor-grabbing"
-          style={{ width: `${200 * services.length}%` }}
-        >
-          {extendedServices.reverse().map((service, index) => (
-            <motion.div
-              key={`reverse-${service.id}-${index}`}
-              className="flex-shrink-0 w-80 md:w-96 bg-white rounded-2xl md:rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group"
-              whileHover={{ scale: 1.05, y: -10 }}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-            >
-              {/* Imagem do Serviço */}
-              <div className="relative h-48 md:h-64 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {/* Ícone do Serviço */}
-                <div className="absolute top-3 md:top-4 right-3 md:right-4 p-2 md:p-3 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
-                  {service.icon === tesouraIcon ? (<img src={service.icon} alt="Tesoura" className="w-5 h-5 md:w-6 md:h-6" style={{ filter: "invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)" }} />) : (<service.icon className="w-5 h-5 md:w-6 md:h-6 text-dmens-orange" />)}
+        <div className="overflow-x-hidden">
+          <motion.div
+            animate={{
+              x: [-(services.length * 272), 0],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 45,
+                ease: "linear",
+              },
+            }}
+            className="flex space-x-6"
+          >
+            {extendedServices.map((service, index) => (
+              <motion.div
+                key={`reverse-${service.id}-${index}`}
+                className="flex-shrink-0 w-64 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group"
+                whileHover={{ scale: 1.05, y: -8, zIndex: 20 }}
+              >
+                {/* Imagem do Serviço - Proporção 3:4 (Retrato) */}
+                <div className="relative h-[340px] overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  
+                  {/* Ícone do Serviço */}
+                  <div className="absolute top-3 right-3 p-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+                    {service.icon === tesouraIcon ? (
+                      <img src={service.icon} alt="Tesoura" className="w-5 h-5" style={{ filter: "invert(48%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(97%) contrast(97%)" }} />
+                    ) : (
+                      <service.icon className="w-5 h-5 text-dmens-orange" />
+                    )}
+                  </div>
+                  
+                  {/* Overlay com efeito hover */}
+                  <div className="absolute inset-0 bg-dmens-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                
-                {/* Overlay com efeito hover */}
-                <div className="absolute inset-0 bg-dmens-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
 
-              {/* Conteúdo do Card */}
-              <div className="p-6 md:p-8">
-                <h3 className="text-xl md:text-2xl font-display font-bold text-dmens-blue mb-3 md:mb-4 group-hover:text-dmens-orange transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 font-body leading-relaxed text-base md:text-lg">
-                  {service.description}
-                </p>
-                
-                {/* Decoração */}
-                <div className="mt-4 md:mt-6 h-1 w-12 md:w-16 bg-dmens-orange rounded-full group-hover:w-20 md:group-hover:w-24 transition-all duration-300" />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Conteúdo do Card */}
+                <div className="p-5">
+                  <h3 className="text-lg font-display font-bold text-dmens-blue mb-2 group-hover:text-dmens-orange transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 font-body leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                  
+                  {/* Decoração */}
+                  <div className="mt-4 h-1 w-12 bg-dmens-orange rounded-full group-hover:w-16 transition-all duration-300" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* CTA Final */}

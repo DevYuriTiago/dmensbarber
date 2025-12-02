@@ -54,9 +54,9 @@ const History: React.FC = () => {
     {
       id: 4,
       title: "Mestre Barbeiro",
-      subtitle: "Experiência e Dedicação",
+      subtitle: "Denys Lima - Experiência e Dedicação",
       text: "Nosso fundador possui mais de 15 anos de experiência na arte da barbearia. Formado pelas melhores escolas e com certificações internacionais, lidera nossa equipe com paixão e dedicação.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      image: "/mestre-barbeiro.jpeg",
       icon: Clock,
       stats: "15+ anos de experiência"
     }
