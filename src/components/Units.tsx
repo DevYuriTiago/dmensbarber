@@ -79,7 +79,7 @@ const Units: React.FC = () => {
   return (
     <section 
       id="unidades"
-      className="relative py-12 md:py-16 overflow-hidden"
+      className="relative py-6 md:py-8 overflow-hidden"
       role="region"
       aria-label="Nossas Unidades"
       style={{
@@ -126,9 +126,9 @@ const Units: React.FC = () => {
             duration: 0.5,
             ease: "easeOut"
           }}
-          className="text-center mb-8 md:mb-12"
+          className="text-center mb-4 md:mb-6"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-4 drop-shadow-lg">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-2 drop-shadow-lg">
             Nossas Unidades
           </h2>
           <motion.p 
@@ -136,7 +136,7 @@ const Units: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.4 }}
-            className="text-2xl md:text-3xl text-gray-200 max-w-3xl mx-auto font-body leading-relaxed drop-shadow-md"
+            className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto font-body leading-relaxed drop-shadow-md"
           >
             Duas localizações estratégicas, um só padrão de excelência
           </motion.p>
@@ -148,7 +148,7 @@ const Units: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 gap-6 md:gap-8"
+          className="grid md:grid-cols-2 gap-4 md:gap-6"
         >
           {units.map((unit, index) => (
             <motion.div
@@ -157,16 +157,16 @@ const Units: React.FC = () => {
               className="flex justify-center"
             >
               <div
-                className="w-full max-w-lg bg-dmens-orange border-2 border-dmens-orange hover:border-orange-400 transition-colors duration-300 group shadow-2xl rounded-2xl overflow-hidden"
+                className="w-full max-w-md bg-dmens-orange border-2 border-dmens-orange hover:border-orange-400 transition-colors duration-300 group shadow-2xl rounded-2xl overflow-hidden"
                 style={{
                   transform: 'translateZ(0)',
                   willChange: 'auto'
                 }}
               >
                 {/* Card Content */}
-                <div className="relative h-full flex flex-col p-6">
-                  {/* Header with Image */}
-                  <div className="relative h-56 rounded-xl overflow-hidden mb-6">
+                <div className="relative h-full flex flex-col p-3">
+                  {/* Header with Image - Proporção 5:4 (0.8:1 - Mais larga) */}
+                  <div className="relative w-full aspect-[5/4] rounded-xl overflow-hidden mb-3">
                     <img
                       src={unit.image}
                       alt={`${unit.name} - D'Mens Barbearia`}
@@ -177,29 +177,29 @@ const Units: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     
                     {/* Rating Badge */}
-                    <div className="absolute top-4 right-4 flex items-center space-x-1 bg-white/90 px-3 py-2 rounded-full shadow-lg">
-                      <Star className="w-4 h-4 text-dmens-orange fill-current" />
-                      <span className="text-sm font-bold text-dmens-blue">{unit.rating}</span>
+                    <div className="absolute top-3 right-3 flex items-center space-x-1 bg-white/90 px-2 py-1.5 rounded-full shadow-lg">
+                      <Star className="w-3.5 h-3.5 text-dmens-orange fill-current" />
+                      <span className="text-xs font-bold text-dmens-blue">{unit.rating}</span>
                     </div>
                     
                     {/* Clients Badge */}
-                    <div className="absolute top-4 left-4 flex items-center space-x-2 bg-white/90 px-3 py-2 rounded-full shadow-lg">
-                      <Users className="w-4 h-4 text-dmens-orange" />
-                      <span className="text-sm font-bold text-dmens-orange">{unit.clients}</span>
+                    <div className="absolute top-3 left-3 flex items-center space-x-2 bg-white/90 px-2 py-1.5 rounded-full shadow-lg">
+                      <Users className="w-3.5 h-3.5 text-dmens-orange" />
+                      <span className="text-xs font-bold text-dmens-orange">{unit.clients}</span>
                     </div>
                     
                     {/* Unit Name Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-2xl md:text-3xl font-display font-bold text-white drop-shadow-lg">
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-xl md:text-2xl font-display font-bold text-white drop-shadow-lg">
                         {unit.name}
                       </h3>
                     </div>
                   </div>
 
                   {/* Unit Details */}
-                  <div className="flex-1 space-y-4 px-2">
+                  <div className="flex-1 space-y-2 px-2">
                     {/* Address */}
-                    <div className="flex items-start space-x-3 p-4 bg-white/20 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200">
+                    <div className="flex items-start space-x-3 p-2.5 bg-white/20 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200">
                       <MapPin className="w-5 h-5 text-white mt-1 flex-shrink-0" />
                       <div>
                         <p className="font-body text-white font-semibold">{unit.address}</p>
@@ -208,17 +208,17 @@ const Units: React.FC = () => {
                     </div>
 
                     {/* Hours */}
-                    <div className="flex items-center space-x-3 p-4 bg-white/20 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200">
+                    <div className="flex items-center space-x-3 p-2.5 bg-white/20 rounded-xl border border-white/30 hover:border-white/50 transition-colors duration-200">
                       <Clock className="w-5 h-5 text-white flex-shrink-0" />
                       <p className="font-body text-white font-semibold">{unit.hours}</p>
                     </div>
 
                     {/* Features Grid */}
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-2">
                       {unit.features.map((feature, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center space-x-2 p-3 bg-white/20 rounded-lg border border-white/30 hover:bg-white/30 hover:border-white/50 transition-colors duration-200"
+                          className="flex items-center space-x-2 p-2 bg-white/20 rounded-lg border border-white/30 hover:bg-white/30 hover:border-white/50 transition-colors duration-200"
                         >
                           <feature.icon className="w-4 h-4 text-white" />
                           <span className="text-xs font-body text-white font-medium">
@@ -233,11 +233,11 @@ const Units: React.FC = () => {
                       onClick={() => handleWhatsApp(unit.name)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-dmens-orange font-bold py-4 px-6 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-lg mt-6"
+                      className="w-full flex items-center justify-center space-x-3 bg-white hover:bg-gray-100 text-dmens-orange font-bold py-3 px-6 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-lg mt-3"
                       aria-label={`Agendar horário na ${unit.name} via WhatsApp`}
                     >
                       <Phone className="w-5 h-5" />
-                      <span className="font-body text-lg">Agendar Agora</span>
+                      <span className="font-body text-base">Agendar Agora</span>
                     </motion.button>
                   </div>
                 </div>

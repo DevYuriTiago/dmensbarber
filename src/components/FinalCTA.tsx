@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Instagram } from 'lucide-react';
 import chatIcon from '../assets/chat.png';
 import livroIcon from '../assets/livro.png';
 
@@ -163,19 +163,61 @@ const FinalCTA: React.FC = () => {
           </motion.button>
         </motion.div>
 
-        {/* Bottom Text */}
+        {/* Bottom Social & Credits */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 0.8 }}
-          className="mt-12 text-gray-400"
+          className="mt-12 space-y-6"
         >
-          <p className="text-sm md:text-base">
-            📍 Av. Principal, 123 - Centro | 📞 (11) 99999-9999 | ⏰ Seg-Sáb: 8h-18h
-          </p>
-          <p className="text-xs mt-2 opacity-70">
-            Mais de 8 anos transformando vidas através do estilo e do conhecimento
-          </p>
+          {/* Social Media */}
+          <div className="flex justify-center items-center gap-6">
+            <motion.a
+              href="https://www.instagram.com/dmensbarbearia"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center space-x-2 bg-white/10 hover:bg-dmens-orange/20 border border-white/20 hover:border-dmens-orange px-4 py-2 rounded-full transition-all duration-300"
+              aria-label="Instagram da D'Mens Barbearia"
+            >
+              <Instagram className="w-5 h-5 text-white" />
+              <span className="text-white font-semibold">Instagram</span>
+            </motion.a>
+
+            <motion.a
+              href="https://wa.me/5581987979894"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1, rotate: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center space-x-2 bg-white/10 hover:bg-dmens-orange/20 border border-white/20 hover:border-dmens-orange px-4 py-2 rounded-full transition-all duration-300"
+              aria-label="WhatsApp da D'Mens Barbearia"
+            >
+              <img 
+                src={chatIcon} 
+                alt="WhatsApp" 
+                className="w-5 h-5" 
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
+              <span className="text-white font-semibold">WhatsApp</span>
+            </motion.a>
+          </div>
+
+          {/* Credits */}
+          <div className="text-gray-400">
+            <p className="text-sm">
+              Site desenvolvido pela{' '}
+              <a 
+                href="https://prompts360.com.br" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-dmens-orange hover:text-orange-400 font-semibold transition-colors duration-200"
+              >
+                Prompts360
+              </a>
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -9,6 +9,7 @@ const History: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [direction, setDirection] = useState(1); // 1 = próximo (direita), -1 = anterior (esquerda)
+  const [key, setKey] = useState(0); // Chave para forçar reset do timer
   const sectionRef = useRef<HTMLElement>(null);
 
   // Detecta se é mobile
@@ -29,7 +30,7 @@ const History: React.FC = () => {
       title: "Nossa História",
       subtitle: "Tradição e Paixão",
       text: "Fundada com o sonho de criar um espaço único para o homem moderno, a D'Mens Barbearia nasceu da paixão pela arte de barbear e do cuidado masculino. Desde o primeiro dia, nosso compromisso tem sido oferecer não apenas um corte de cabelo, mas uma experiência completa de bem-estar e estilo.",
-      image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80",
+      image: "/nossa-historia.webp",
       icon: Award,
       stats: "Fundada em 2018"
     },
@@ -47,7 +48,7 @@ const History: React.FC = () => {
       title: "Nossa Equipe",
       subtitle: "Profissionais Qualificados",
       text: "Contamos com uma equipe de barbeiros altamente qualificados, cada um especialista em diferentes técnicas e estilos. Nossos profissionais participam regularmente de cursos e workshops para se manterem atualizados com as últimas tendências do mundo da barbearia.",
-      image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80",
+      image: "/nossa-equipe.webp",
       icon: Users,
       stats: "Equipe de 8 profissionais certificados"
     },
@@ -95,21 +96,24 @@ const History: React.FC = () => {
     }, 7000); // 7 seconds per slide - FIXO para todos
 
     return () => clearInterval(timer);
-  }, [isVisible]); // Remove slides.length para não resetar o timer
+  }, [isVisible, key]); // Adiciona 'key' para resetar o timer quando mudar
 
   const nextSlide = () => {
     setDirection(1); // Direção: próximo (esquerda → direita)
     setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setKey(prev => prev + 1); // Reseta o timer
   };
 
   const prevSlide = () => {
     setDirection(-1); // Direção: anterior (direita → esquerda)
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setKey(prev => prev + 1); // Reseta o timer
   };
 
   const goToSlide = (index: number) => {
     setDirection(index > currentSlide ? 1 : -1); // Define direção baseado no índice
     setCurrentSlide(index);
+    setKey(prev => prev + 1); // Reseta o timer
   };
 
   return (
